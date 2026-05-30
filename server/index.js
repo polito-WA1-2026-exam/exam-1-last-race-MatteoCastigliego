@@ -1,5 +1,6 @@
 // imports
 import express from "express";
+import './db.js';
 
 // init express
 const app = new express();
