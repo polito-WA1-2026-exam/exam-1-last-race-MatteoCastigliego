@@ -64,4 +64,17 @@ const getEvents = () => {
   });
 };
 
+const getRankings = () => {
+  return new Promise((resolve, reject) => {
+    const sql = 'SELECT user.username, MAX(game.score) AS best_score FROM game JOIN user ON user.id=game.id_user WHERE game.score IS NOT NULL GROUP BY user.id ORDER BY best_score DESC';
+    db.all(sql, [], (err, rows) => {
+      if(err){
+        reject(err);
+      }else{
+        resolve(rows);
+      }
+    });
+  });
+};
 
+export { getUser, getStations, getLines, getEvents, getRankings };
