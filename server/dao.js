@@ -107,4 +107,17 @@ const getGame = (gameId) => {
   });
 };
 
-export { getUser, getStations, getLines, getEvents, getRankings, createGame, updateScore, getGame };
+const getStationsOfLines = () => {
+  return new Promise((resolve, reject) => {
+    const sql = 'SELECT * FROM stations_of_a_line';
+    db.all(sql, [], (err, rows) => {
+      if(err){
+        reject(err);
+      }else{
+        resolve(rows);
+      }
+    });
+  });
+};
+
+export { getUser, getStations, getLines, getEvents, getRankings, createGame, updateScore, getGame, getStationsOfLines };
