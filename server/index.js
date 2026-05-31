@@ -6,7 +6,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
 import './db.js';
-import { getUser, getStations, getLines, getEvents, getRankings, getGame } from './dao.js';
+import { getUser, getStations, getLines, getEvents, getRankings, getGame, createGame, updateScore } from './dao.js';
 
 /* init */
 const app = express();
@@ -45,6 +45,25 @@ const isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) return next();
   return res.status(401).json({ error: 'Not authorized' });
 };
+
+/* pairs of valid start-end stations that will be randomly selected by the application */
+const ValidPairs = [
+  { start: 'Fermi', end: 'Porta Nuova' },
+  { start: 'Bengasi', end: 'Dante' },
+  { start: 'Bernini', end: 'Racconigi' },
+  { start: 'Porta Susa', end: 'Lingotto' },
+  { start: 'Nizza', end: 'Massaua' },
+  { start: 'XVII Dicembre', end: 'Re Umberto' },
+  { start: 'Marconi', end: 'Fermi' },
+  { start: 'Nizza', end: 'Bengasi' },
+  { start: 'Re Umberto', end: 'Dante' },
+  { start: 'Re Umberto', end: 'Bernini' },
+  { start: 'Spezia', end: 'Rivoli' },
+  { start: 'Fermi', end: 'Dante' },
+  { start: 'Rivoli', end: 'Marche' },
+  { start: 'Racconigi', end: 'Nizza' },
+  { start: 'Fermi', end: 'Bengasi' },
+]
 
 /* routes section */
 
@@ -118,6 +137,7 @@ app.get('/api/games/:id', isLoggedIn, async (req, res) => {
     res.status(500).json({ error: 'Error during getting the game!' });
   }
 });
+
 
 /* start the server */
 app.listen(port, () => {console.log(`Server listening at http://localhost:${port}`)});
