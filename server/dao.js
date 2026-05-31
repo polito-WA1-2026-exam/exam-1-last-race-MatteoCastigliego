@@ -77,4 +77,34 @@ const getRankings = () => {
   });
 };
 
-export { getUser, getStations, getLines, getEvents, getRankings };
+const createGame = (userId, startStationId, endStationId) => {
+  return new Promise((resolve, reject) => {
+    const sql = 'INSERT INTO game (id_user, id_station_start, id_station_end) VALUES (?, ?, ?)';
+    db.run(sql, [userId, startStationId, endStationId], function(err) {
+      if (err) reject(err);
+      else resolve(this.lastID);
+    });
+  });
+};
+
+const updateScore = (gameId, score) => {
+  return new Promise((resolve, reject) => {
+    const sql = 'UPDATE game SET score = ? WHERE id = ?';
+    db.run(sql, [score, gameId], (err) => {
+      if (err) reject(err);
+      else resolve();
+    });
+  });
+};
+
+const getGame = (gameId) => {
+  return new Promise((resolve, reject) => {
+    const sql = 'SELECT * FROM game WHERE id = ?';
+    db.get(sql, [gameId], (err, row) => {
+      if (err) reject(err);
+      else resolve(row);
+    });
+  });
+};
+
+export { getUser, getStations, getLines, getEvents, getRankings, createGame, updateScore, getGame };

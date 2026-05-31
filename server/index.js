@@ -6,7 +6,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
 import './db.js';
-import { getUser, getStations, getLines, getEvents, getRankings } from './dao.js';
+import { getUser, getStations, getLines, getEvents, getRankings, getGame } from './dao.js';
 
 /* init */
 const app = express();
@@ -105,6 +105,17 @@ app.get('/api/ranking', isLoggedIn, async (req, res) => {
     res.json(ranking);
   } catch {
     res.status(500).json({ error: 'Error during getting list of rankings!' });
+  }
+});
+
+// GET /api/game/:id — take a game
+app.get('/api/games/:id', isLoggedIn, async (req, res) => {
+  try {
+    const game = await getGame(req.params.id);
+    if (!game) return res.status(404).json({ error: 'Game not found' });
+    res.json(game);
+  } catch {
+    res.status(500).json({ error: 'Error during getting the game!' });
   }
 });
 
