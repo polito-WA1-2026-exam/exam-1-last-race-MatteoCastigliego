@@ -1,0 +1,88 @@
+<svg viewBox="0 0 910 590" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
+
+  <rect width="900" height="580" fill="#1a1a2e"/>
+  <text x="450" y="32" text-anchor="middle" fill="white" font-size="17" font-weight="700">LAST RACE – Underground Network</text>
+
+  <!-- ══ REGULAR STATIONS ══ -->
+
+  <!-- Fermi -->
+  <circle cx="80" cy="90" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="58" y="80" text-anchor="middle" fill="white" font-size="10">Fermi</text>
+
+  <!-- Massaua -->
+  <circle cx="160" cy="150" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="132" y="142" text-anchor="middle" fill="white" font-size="10">Massaua</text>
+
+  <!-- Rivoli -->
+  <circle cx="240" cy="220" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="214" y="212" text-anchor="middle" fill="white" font-size="10">Rivoli</text>
+
+  <!-- XVII Dicembre -->
+  <circle cx="100" cy="300" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="100" y="287" text-anchor="middle" fill="white" font-size="10">XVII Dic.</text>
+
+  <!-- Re Umberto -->
+  <circle cx="820" cy="180" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="846" y="184" text-anchor="start" fill="white" font-size="10">Re Umberto</text>
+
+  <!-- Bernini -->
+  <circle cx="340" cy="460" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="310" y="460" text-anchor="end" fill="white" font-size="10">Bernini</text>
+
+  <!-- Nizza -->
+  <circle cx="340" cy="530" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="310" y="530" text-anchor="end" fill="white" font-size="10">Nizza</text>
+
+  <!-- Dante -->
+  <circle cx="480" cy="390" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="480" y="378" text-anchor="middle" fill="white" font-size="10">Dante</text>
+
+  <!-- Spezia -->
+  <circle cx="610" cy="390" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="610" y="378" text-anchor="middle" fill="white" font-size="10">Spezia</text>
+
+  <!-- Racconigi -->
+  <circle cx="560" cy="350" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="548" y="338" text-anchor="middle" fill="white" font-size="10">Racconigi</text>
+
+  <!-- Marche -->
+  <circle cx="630" cy="390" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="630" y="378" text-anchor="middle" fill="white" font-size="10">Marche</text>
+
+  <!-- Bengasi -->
+  <circle cx="820" cy="500" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="820" y="518" text-anchor="middle" fill="white" font-size="10">Bengasi</text>
+
+  <!-- Porta Nuova -->
+  <circle cx="660" cy="300" r="7" fill="white" stroke="#888" stroke-width="2"/>
+  <text x="660" y="287" text-anchor="middle" fill="white" font-size="10">Porta Nuova</text>
+
+  <!-- ══ INTERCHANGE STATIONS ══ -->
+
+  <!-- Porta Susa: M1+M2+M3 -->
+  <circle cx="340" cy="300" r="14" fill="#1a1a2e" stroke="white" stroke-width="4"/>
+  <text x="340" y="283" text-anchor="middle" fill="white" font-size="10" font-weight="700">Porta Susa</text>
+
+  <!-- Vinzaglio: M2+M5 -->
+  <circle cx="500" cy="300" r="12" fill="#1a1a2e" stroke="white" stroke-width="3"/>
+  <text x="500" y="287" text-anchor="middle" fill="white" font-size="10" font-weight="700">Vinzaglio</text>
+
+  <!-- Marconi: M3+M4 -->
+  <circle cx="340" cy="390" r="12" fill="#1a1a2e" stroke="white" stroke-width="3"/>
+  <text x="300" y="394" text-anchor="end" fill="white" font-size="10" font-weight="700">Marconi</text>
+
+  <!-- Lingotto: M4+M5 -->
+  <circle cx="740" cy="430" r="12" fill="#1a1a2e" stroke="white" stroke-width="3"/>
+  <text x="778" y="434" text-anchor="start" fill="white" font-size="10" font-weight="700">Lingotto</text>
+
+  <!-- ══ LEGEND ══ -->
+  <rect x="18" y="360" width="148" height="120" rx="6" fill="#ffffff18"/>
+  <text x="92" y="382" text-anchor="middle" fill="white" font-size="12" font-weight="700">Legenda</text>
+  <circle cx="45" cy="400" r="9" fill="#1a1a2e" stroke="white" stroke-width="3"/>
+  <text x="70" y="404" fill="white" font-size="11">Interscambio</text>
+  <circle cx="45" cy="422" r="9" fill="#1a1a2e" stroke="white" stroke-width="4"/>
+  <text x="70" y="426" fill="white" font-size="11">Triplo intersc.</text>
+  <circle cx="45" cy="444" r="5" fill="white"/>
+  <text x="70" y="448" fill="white" font-size="11">Stazione</text>
+
+</svg>
