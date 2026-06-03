@@ -1,0 +1,102 @@
+# ==============================
+# AUTH
+# ==============================
+
+# Login (good)
+POST http://localhost:3001/api/sessions
+content-type: application/json
+
+{
+  "username": "matteocastigliego",
+  "password": "matteo"
+}
+
+###
+
+# Login (bad password)
+POST http://localhost:3001/api/sessions
+content-type: application/json
+
+{
+  "username": "matteocastigliego",
+  "password": "wrong"
+}
+
+###
+
+# Check current session
+GET http://localhost:3001/api/sessions/current
+
+###
+
+# Logout
+DELETE http://localhost:3001/api/sessions/current
+
+###
+
+# ==============================
+# NETWORK DATA (require login)
+# ==============================
+
+# Get all stations
+GET http://localhost:3001/api/stations
+
+###
+
+# Get all lines
+GET http://localhost:3001/api/lines
+
+###
+
+# Get all events
+GET http://localhost:3001/api/events
+
+###
+
+# Get ranking
+GET http://localhost:3001/api/ranking
+
+###
+
+# ==============================
+# GAME (require login)
+# ==============================
+
+# Create a new game
+POST http://localhost:3001/api/game
+
+###
+
+# Get a game by id (change id as needed)
+GET http://localhost:3001/api/game/1
+
+###
+
+# Execute route — valid example (change station ids to match your DB)
+# Fermi(4) -> Massaua(12) -> Rivoli(16) -> Porta Susa(2) -> Marconi(3) -> Bernini(11)
+POST http://localhost:3001/api/game/5/execute
+content-type: application/json
+
+{
+  "segments": [
+    { "from": 6, "to": 11 },
+    { "from": 11, "to": 3 },
+    { "from": 3, "to": 2 },
+    { "from": 2, "to": 16 },
+    { "from": 16, "to": 12 }
+  ]
+}
+
+###
+
+# Execute route — invalid (segmento inesistente sulla rete)
+POST http://localhost:3001/api/game/1/execute
+content-type: application/json
+
+{
+  "segments": [
+    { "from": 4, "to": 99 }
+  ]
+}
+
+###
