@@ -8,6 +8,8 @@ import Header from './components/Header.jsx';
 import { LoginForm, Logout } from './components/LoginForm.jsx';
 import { checkSession } from './api/auth.js';
 import UserContext from './contexts/UserContext.js';
+import PublicPage from './components/PublicPage.jsx'
+import PlayPage from './components/PlayPage.jsx';
 import './App.css'
 
 
@@ -42,7 +44,7 @@ function App() {
       <Container>
         <Routes>
             <Route path='/' element={<PublicPage />}/>
-            <Route path='/home' element={user.id ? <HomeView /> : <Navigate to='/' />} />
+            <Route path='/home' element={user.id ? <PlayPage /> : <Navigate to='/' />} />
             <Route path='/login' element={<LoginForm doLogin={doLogin} />} />
             <Route path='/logout' element={<Logout doLogout={doLogout} />} />
             <Route path='/game' element={user.id ? <GamePage /> : <Navigate to='/' />} />
@@ -55,8 +57,6 @@ function App() {
   )
 }
 
-function PublicPage() { return <h1>Public Page</h1> }
-function HomeView() { return <h1>Home</h1> }
 function GamePage() { return <h1>Game</h1> }
 function RankingPage() { return <h1>Ranking</h1> }
 

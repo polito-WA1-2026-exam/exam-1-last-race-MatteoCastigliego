@@ -182,3 +182,13 @@
     border-right-color: var(--border);
   }
 }
+
+.navbar-brand-link {
+  color: white;
+  text-decoration: none;
+}
+
+.metro-map {
+  width: 100%;
+  max-width: 900px;
+}

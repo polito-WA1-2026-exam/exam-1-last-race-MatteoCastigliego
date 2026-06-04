@@ -16,8 +16,7 @@ function Header({ doLogout: handleLogout }) {
   return (
     <Navbar bg='dark' variant='dark'>
       <Container fluid>
-        <Navbar.Brand><Link to='/' style={{ color: 'white', textDecoration: 'none' }}>Last Race</Link></Navbar.Brand>
-        <Nav className="ms-auto">
+        <Navbar.Brand><Link to={user.id ? '/home' : '/'} className="navbar-brand-line">Last Race</Link></Navbar.Brand>        <Nav className="ms-auto">
           {user.id ? (
             <>
               <Nav.Link as={Link} to='/home'>Home</Nav.Link>
