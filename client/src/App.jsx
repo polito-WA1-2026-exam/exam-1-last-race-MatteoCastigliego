@@ -50,8 +50,14 @@ function App() {
             <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </Container>
+      <Footer/>
     </UserContext.Provider>
   )
 }
+
+function PublicPage() { return <h1>Public Page</h1> }
+function HomeView() { return <h1>Home</h1> }
+function GamePage() { return <h1>Game</h1> }
+function RankingPage() { return <h1>Ranking</h1> }
 
 export default App
