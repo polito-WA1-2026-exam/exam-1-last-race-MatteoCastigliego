@@ -38,6 +38,19 @@ const getStations = () => {
   });
 };
 
+const getStationFromId = (id) => {
+  return new Promise((resolve, reject) => {
+    const sql = 'SELECT name FROM station Where id=?';
+    db.get(sql, [id], (err, rows) => {
+      if(err){
+        reject(err);
+      }else{
+        resolve(rows);
+      }
+    });
+  });
+};
+
 const getLines = () => {
   return new Promise((resolve, reject) => {
     const sql = 'SELECT * FROM line';
@@ -136,4 +149,4 @@ const getSegments = () => {
   });
 };
 
-export { getUser, getStations, getLines, getEvents, getRankings, createGame, updateScore, getGame, getStationsOfLines, getSegments };
+export { getUser, getStations, getLines, getEvents, getRankings, createGame, updateScore, getGame, getStationsOfLines, getSegments, getStationFromId };
