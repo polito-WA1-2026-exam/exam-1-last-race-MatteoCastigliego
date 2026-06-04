@@ -6,10 +6,10 @@ async function createGame() {
   throw new Error('Failed to create game')
 }
 
-async function fetchStations() {
-  const res = await fetch(`http://localhost:3001/api/stations`, { credentials: 'include' })
+async function fetchSegments() {
+  const res = await fetch('http://localhost:3001/api/segments', { credentials: 'include' })
   if (res.ok) return await res.json()
-  throw new Error('Failed to fetch stations')
+  throw new Error('Failed to fetch segments')
 }
 
 async function executeGame(gameId, segments) {
@@ -23,4 +23,4 @@ async function executeGame(gameId, segments) {
   throw new Error('Failed to execute game')
 }
 
-export { createGame, fetchStations, executeGame }
+export { createGame, fetchSegments, executeGame }
