@@ -120,4 +120,20 @@ const getStationsOfLines = () => {
   });
 };
 
-export { getUser, getStations, getLines, getEvents, getRankings, createGame, updateScore, getGame, getStationsOfLines };
+const getSegments = () => {
+  return new Promise((resolve, reject) => {
+    const sql = `
+      SELECT s1.id AS 'from', s1.name AS fromName, s2.id AS 'to', s2.name AS toName
+      FROM stations_of_a_line sol1
+      JOIN stations_of_a_line sol2 ON sol1.id_line = sol2.id_line AND sol1.position + 1 = sol2.position
+      JOIN station s1 ON s1.id = sol1.id_station
+      JOIN station s2 ON s2.id = sol2.id_station
+    `;
+    db.all(sql, [], (err, rows) => {
+      if (err) reject(err);
+      else resolve(rows);
+    });
+  });
+};
+
+export { getUser, getStations, getLines, getEvents, getRankings, createGame, updateScore, getGame, getStationsOfLines, getSegments };
