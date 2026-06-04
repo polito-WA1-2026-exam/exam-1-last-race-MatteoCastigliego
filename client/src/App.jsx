@@ -30,7 +30,7 @@ function App() {
   // Login action handler
   const doLogin = (newUser) => {
     setUser({ id: newUser.id, username: newUser.username, name: newUser.name })
-    navigate('/home')
+    navigate('/play')
   }
 
    const doLogout = () => {
@@ -44,7 +44,7 @@ function App() {
       <Container>
         <Routes>
             <Route path='/' element={<PublicPage />}/>
-            <Route path='/home' element={user.id ? <PlayPage /> : <Navigate to='/' />} />
+            <Route path='/play' element={user.id ? <PlayPage /> : <Navigate to='/' />} />
             <Route path='/login' element={<LoginForm doLogin={doLogin} />} />
             <Route path='/logout' element={<Logout doLogout={doLogout} />} />
             <Route path='/game' element={user.id ? <GamePage /> : <Navigate to='/' />} />

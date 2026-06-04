@@ -16,10 +16,11 @@ function Header({ doLogout: handleLogout }) {
   return (
     <Navbar bg='dark' variant='dark'>
       <Container fluid>
-        <Navbar.Brand><Link to={user.id ? '/home' : '/'} className="text-white text-decoration-none">Last Race</Link></Navbar.Brand>        <Nav className="ms-auto">
+        <Navbar.Brand><Link to={user.id ? '/play' : '/'} className="text-white text-decoration-none">Last Race</Link></Navbar.Brand>        
+        <Nav className="ms-auto">
           {user.id ? (
             <>
-              <Nav.Link as={Link} to='/home'>Home</Nav.Link>
+              <Nav.Link as={Link} to='/play'>Home</Nav.Link>
               <Nav.Link as={Link} to='/ranking'>Ranking</Nav.Link>
               <UserInfo name = {user.name} />
               <LogoutButton logout = {logout}/>
