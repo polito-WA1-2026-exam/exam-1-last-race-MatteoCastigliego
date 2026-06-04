@@ -16,7 +16,7 @@ function Header({ doLogout: handleLogout }) {
   return (
     <Navbar bg='dark' variant='dark'>
       <Container fluid>
-        <Navbar.Brand><Link to={user.id ? '/play' : '/'} className="text-white text-decoration-none">Last Race</Link></Navbar.Brand>        
+        <Navbar.Brand><Link to={user.id ? '/game' : '/'} className="text-white text-decoration-none">Last Race</Link></Navbar.Brand>        
         <Nav className="ms-auto">
           {user.id ? (
             <>

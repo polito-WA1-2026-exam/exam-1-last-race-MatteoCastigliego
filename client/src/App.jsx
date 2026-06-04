@@ -9,6 +9,7 @@ import { LoginForm, Logout } from './components/LoginForm.jsx';
 import { checkSession } from './api/auth.js';
 import UserContext from './contexts/UserContext.js';
 import PublicPage from './components/PublicPage.jsx'
+import GamePage from './components/GamePage.jsx';
 import PlayPage from './components/PlayPage.jsx';
 import './App.css'
 
@@ -30,7 +31,7 @@ function App() {
   // Login action handler
   const doLogin = (newUser) => {
     setUser({ id: newUser.id, username: newUser.username, name: newUser.name })
-    navigate('/play')
+    navigate('/game')
   }
 
    const doLogout = () => {
@@ -43,7 +44,7 @@ function App() {
       <Header doLogout={doLogout} />
       <Container>
         <Routes>
-            <Route path='/' element={user.id ? <PlayPage /> : <PublicPage />}/>
+            <Route path='/' element={user.id ? <GamePage /> : <PublicPage />}/>
             <Route path='/play' element={user.id ? <PlayPage /> : <Navigate to='/' />} />
             <Route path='/login' element={<LoginForm doLogin={doLogin} />} />
             <Route path='/logout' element={<Logout doLogout={doLogout} />} />
@@ -57,7 +58,7 @@ function App() {
   )
 }
 
-function GamePage() { return <h1>Game</h1> }
+
 function RankingPage() { return <h1>Ranking</h1> }
 
 export default App
