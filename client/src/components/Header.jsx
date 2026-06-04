@@ -44,7 +44,7 @@ function LogoutButton(prop){
 }
 
 function UserInfo(props){
-  return <Nav.Item className="d-flex align-items-center text-white me-3">{props.name}</Nav.Item>
+  return <Nav.Item className="d-flex align-items-center text-white me-3">Bentornato/a, {props.name}</Nav.Item>
 }
 
 export default Header;

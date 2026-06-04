@@ -43,7 +43,7 @@ function App() {
       <Header doLogout={doLogout} />
       <Container>
         <Routes>
-            <Route path='/' element={<PublicPage />}/>
+            <Route path='/' element={user.id ? <PlayPage /> : <PublicPage />}/>
             <Route path='/play' element={user.id ? <PlayPage /> : <Navigate to='/' />} />
             <Route path='/login' element={<LoginForm doLogin={doLogin} />} />
             <Route path='/logout' element={<Logout doLogout={doLogout} />} />
