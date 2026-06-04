@@ -45,7 +45,7 @@ const getStationFromId = (id) => {
       if(err){
         reject(err);
       }else{
-        resolve(rows);
+        resolve(rows?.name);
       }
     });
   });
