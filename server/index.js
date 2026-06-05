@@ -101,6 +101,7 @@ const buildGraph = (stationsOfLines) => {
   return graph;
 };
 
+// Validates the route built by the user 
 const validateRoute = (segments, startId, endId, { lineSets, interchanges }) => {
   if (!segments?.length) return false;
 
