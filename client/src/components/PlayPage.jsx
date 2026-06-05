@@ -1,18 +1,14 @@
 import { Container, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
-import metroMap from '../assets/metro_map.svg'
 
 function PlayPage() {
   const navigate = useNavigate()
 
   return (
-    <Container className="mt-4">
-      <h1>Underground Network</h1>
-      <p>Study the network map, then start a new game when you're ready.</p>
-      <img src={metroMap} alt="Metro map" className='metro-map' />
-      <div className="mt-3">
-        <Button variant="primary" onClick={() => navigate('/game')}>Start new game</Button>
-      </div>
+    <Container className="mt-5 text-center">
+      <h2>Ready for another race?</h2>
+      <p className="text-muted">Your result has been saved to the ranking.</p>
+      <Button variant="primary" size="lg" onClick={() => navigate('/game')}>Play again</Button>
     </Container>
   )
 }
