@@ -6,7 +6,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
 import './db.js';
-import { getUser, getStations, getLines, getEvents, getRankings, getGame, createGame, updateScore, getStationsOfLines } from './dao.js';
+import { getUser, getStations, getLines, getEvents, getRankings, getGame, createGame, updateScore, getStationsOfLines, getSegments, getStationFromId } from './dao.js';
 
 /* init */
 const app = express();
@@ -47,101 +47,100 @@ const isLoggedIn = (req, res, next) => {
 };
 
 /* route validation logic */
-const validateRoute = (segments, startStationId, endStationId, stationsOfLines) => {
-  if (!segments || segments.length === 0) return false;
-  if (segments[0].from !== startStationId) return false;
-  if (segments[segments.length - 1].to !== endStationId) return false;
-
-  //  lineMap: { lineId: [stationId ordinati per position] }
-  const lineMap = {};
+const pairKey = (a, b) => [a, b].sort((x, y) => x - y).join('-');
+// builds a map where the key is the id of the line and the value is the list of the stations ordered per-position
+// example: {id_line, [id_station, position]} 
+const buildLineMap = (stationsOfLines) => {
+  const lineMap = new Map();
   for (const row of stationsOfLines) {
-    if (!lineMap[row.id_line]) lineMap[row.id_line] = [];
-    lineMap[row.id_line].push({ stationId: row.id_station, position: row.position });
+    if (!lineMap.get(row.id_line)) lineMap.set(row.id_line, []);
+    lineMap.get(row.id_line).push({ id: row.id_station, position: row.position });
   }
-  for (const lineId in lineMap) {
-    lineMap[lineId].sort((a, b) => a.position - b.position);
-  }
+  for (const [id, stations] of lineMap) stations.sort((a, b) => a.position - b.position);
+  return lineMap;
+};
 
-  // interchange lines
-  const stationLineCount = {};
-  for (const row of stationsOfLines) {
-    stationLineCount[row.id_station] = (stationLineCount[row.id_station] || 0) + 1;
-  }
-  const isInterchange = (stationId) => stationLineCount[stationId] > 1;
+const prepareNetwork = (stationsOfLines) => {
+  const lineMap = buildLineMap(stationsOfLines);
+  const lineSets = new Map();
+  const stationLineCount = new Map();
 
-  // finds all lines where a segment is valis { from, to }
-  const getLinesForSegment = (from, to) => {
-    const result = [];
-    for (const lineId in lineMap) {
-      const ids = lineMap[lineId].map(s => s.stationId);
-      const fromIdx = ids.indexOf(from);
-      const toIdx = ids.indexOf(to);
-      if (fromIdx !== -1 && toIdx !== -1 && Math.abs(fromIdx - toIdx) === 1) {
-        result.push(lineId);
+  for (const [lineId, sorted] of lineMap) {
+    for (let i = 0; i < sorted.length - 1; i++) {
+      const a = sorted[i].id, b = sorted[i + 1].id;
+      const key = pairKey(a, b);
+      if (!lineSets.has(key)) lineSets.set(key, new Set());
+      lineSets.get(key).add(lineId);
+      for (const id of [a, b]) {
+        stationLineCount.set(id, (stationLineCount.get(id) || 0) + 1);
       }
     }
-    return result;
-  };
+  }
 
-  // keeps track of the current line validating segment-by-segment
-  let currentLines = getLinesForSegment(segments[0].from, segments[0].to);
-  if (currentLines.length === 0) return false;
+  const interchanges = new Set(
+    [...stationLineCount.entries()]
+      .filter(([, count]) => count > 1)
+      .map(([id]) => id)
+  );
 
-  for (let i = 1; i < segments.length; i++) {
-    const seg = segments[i];
-    if (seg.from !== segments[i - 1].to) return false;
+  return { lineSets, interchanges };
+};
 
-    const nextLines = getLinesForSegment(seg.from, seg.to);
-    if (nextLines.length === 0) return false;
-
-    const commonLines = currentLines.filter(l => nextLines.includes(l));
-    if (commonLines.length > 0) {
-      currentLines = commonLines; // same line, no change
-    } else {
-      if (!isInterchange(seg.from)) return false; // out of interchange
-      currentLines = nextLines;
+const buildGraph = (stationsOfLines) => {
+  const lineMap = buildLineMap(stationsOfLines);
+  const graph = new Map();
+  for (const [lineId, sorted] of lineMap) {
+    for (let i = 0; i < sorted.length - 1; i++) {
+      const a = sorted[i].id, b = sorted[i + 1].id;
+      if (!graph.has(a)) graph.set(a, new Set());
+      if (!graph.has(b)) graph.set(b, new Set());
+      graph.get(a).add(b);
+      graph.get(b).add(a);
     }
+  }
+  return graph;
+};
+
+const validateRoute = (segments, startId, endId, { lineSets, interchanges }) => {
+  if (!segments?.length) return false;
+
+  const route = [startId];
+  for (const seg of segments) {
+    const last = route[route.length - 1];
+    if (seg.from === last) route.push(seg.to);
+    else if (seg.to === last) route.push(seg.from);
+    else return false;
+  }
+  if (route[route.length - 1] !== endId) return false;
+
+  let activeLines = lineSets.get(pairKey(route[0], route[1]));
+  if (!activeLines?.size) return false;
+
+  for (let i = 1; i < route.length - 1; i++) {
+    const nextLines = lineSets.get(pairKey(route[i], route[i + 1]));
+    if (!nextLines?.size) return false;
+    const shared = new Set([...activeLines].filter(l => nextLines.has(l)));
+    activeLines = shared.size > 0 ? shared : interchanges.has(route[i]) ? nextLines : null;
+    if (!activeLines) return false;
   }
 
   return true;
 };
 
 /* BFS: returns minimum stops between two stations, -1 if unreachable */
-const bfs = (graph, startId, endId) => {
-  const visited = new Set();
-  const queue = [[startId, 0]];
+const bfs = (graph, startId) => {
+  const dist = new Map([[startId, 0]]);
+  const queue = [startId];
   while (queue.length > 0) {
-    const [current, dist] = queue.shift();
-    if (current === endId) return dist;
-    if (visited.has(current)) continue;
-    visited.add(current);
-    for (const neighbor of (graph[current] || [])) {
-      if (!visited.has(neighbor)) queue.push([neighbor, dist + 1]);
+    const curr = queue.shift();
+    for (const neighbor of graph.get(curr)) {
+      if (!dist.has(neighbor)) {
+        dist.set(neighbor, dist.get(curr) + 1);
+        queue.push(neighbor);
+      }
     }
   }
-  return -1;
-};
-
-/* build adjacency graph from stationsOfLines */
-const buildGraph = (stationsOfLines) => {
-  const lineMap = {};
-  for (const row of stationsOfLines) {
-    if (!lineMap[row.id_line]) lineMap[row.id_line] = [];
-    lineMap[row.id_line].push({ id: row.id_station, position: row.position });
-  }
-  const graph = {};
-  for (const lineId in lineMap) {
-    const sorted = lineMap[lineId].sort((a, b) => a.position - b.position);
-    for (let i = 0; i < sorted.length - 1; i++) {
-      const a = sorted[i].id;
-      const b = sorted[i + 1].id;
-      if (!graph[a]) graph[a] = [];
-      if (!graph[b]) graph[b] = [];
-      graph[a].push(b);
-      graph[b].push(a);
-    }
-  }
-  return graph;
+  return dist;
 };
 
 /* routes section */
@@ -196,6 +195,16 @@ app.get('/api/events', isLoggedIn, async (req, res) => {
   }
 });
 
+// GET /api/segments — all adjacent station pairs
+app.get('/api/segments', isLoggedIn, async (req, res) => {
+  try {
+    const segments = await getSegments();
+    res.json(segments);
+  } catch {
+    res.status(500).json({ error: 'Error while finding segments' });
+  }
+});
+
 // GET /api/ranking — general rankings
 app.get('/api/ranking', isLoggedIn, async (req, res) => {
   try {
@@ -223,21 +232,18 @@ app.post('/api/game', isLoggedIn, async (req, res) => {
     const stationsOfLines = await getStationsOfLines();
     const graph = buildGraph(stationsOfLines);
 
-    // finds all valid pairs (distance >= 3)
-    const valid_pairs = [];
-    for (let i = 0; i < stations.length; i++) {
-      for (let j = 0; j < stations.length; j++) {
-        if (i === j) continue;
-        const dist = bfs(graph, stations[i].id, stations[j].id);
-        if (dist >= 3) valid_pairs.push({ start: stations[i], end: stations[j] });
+    const stationMap = new Map(stations.map(s => [s.id, s]));
+    const validPairs = [];
+
+    for (const [startId] of graph) {
+      const dist = bfs(graph, startId);
+      for (const [endId, d] of dist) {
+        if (d >= 3) validPairs.push({ start: stationMap.get(startId), end: stationMap.get(endId) });
       }
     }
 
-    // no pairs => impossible start the game, returns status error 500
-    if (valid_pairs.length === 0) return res.status(500).json({ error: 'There are not pairs of stations with discance major than 3!' });
-
-    // does not return so there are pairs of stations which distance is major than 3 => enjoy the game
-    const pair = valid_pairs[Math.floor(Math.random() * valid_pairs.length)]; // select random pair
+    if (validPairs.length === 0) return res.status(500).json({ error: 'No valid pairs found!' });
+    const pair = validPairs[Math.floor(Math.random() * validPairs.length)];
     const gameId = await createGame(req.user.id, pair.start.id, pair.end.id);
     res.status(201).json({ gameId, startStation: pair.start, endStation: pair.end });
 
@@ -258,7 +264,8 @@ app.post('/api/game/:id/execute', isLoggedIn, async (req, res) => {
     const events = await getEvents();
     const stationsOfLines = await getStationsOfLines();
 
-    const isValid = validateRoute(segments, game.id_station_start, game.id_station_end, stationsOfLines); // checks validity of the path selected by the user
+    const network = prepareNetwork(stationsOfLines);
+    const isValid = validateRoute(segments, game.id_station_start, game.id_station_end, network);
 
     let finalScore = 0;
     let steps = [];
@@ -268,7 +275,7 @@ app.post('/api/game/:id/execute', isLoggedIn, async (req, res) => {
       for (const seg of segments) {
         const event = events[Math.floor(Math.random() * events.length)]; // same function used before, used to select a random event during the path
         coins += event.coins;
-        steps.push({ from: seg.from, to: seg.to, event: event.description, coinsChange: event.coins, total: coins });
+        steps.push({ from: await getStationFromId(seg.from), to: await getStationFromId(seg.to), event: event.description, coinsChange: event.coins, total: coins });
       }
       finalScore = Math.max(0, coins);
     }
