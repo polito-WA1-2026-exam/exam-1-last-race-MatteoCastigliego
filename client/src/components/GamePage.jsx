@@ -7,7 +7,7 @@ import { createGame, fetchSegments, executeGame } from '../api/api'
 
 function GamePage() {
   const navigate = useNavigate()
-  const [phase, setPhase] = useState('loading')
+  const [phase, setPhase] = useState('setup')
   const [gameId, setGameId] = useState(null)
   const [startStation, setStartStation] = useState(null)
   const [endStation, setEndStation] = useState(null)
@@ -19,18 +19,15 @@ function GamePage() {
 
   const usedKeys = new Set(route.map(seg => seg.index))
 
-  useEffect(() => { // synchronization is needed
-  const init = async () => {
+  const startNewGame = async () => {
     const game = await createGame()
     const segmentList = await fetchSegments()
     setGameId(game.gameId)
     setStartStation(game.startStation)
     setEndStation(game.endStation)
     setSegments(segmentList)
-    setPhase('setup')
+    setPhase('planning')
   }
-  init()
-}, [])
 
   useEffect(() => {
     if (phase !== 'planning') return
@@ -54,7 +51,7 @@ function GamePage() {
   }
 
   const addSegment = (seg, index) => {
-  setRoute(prev => [...prev, { ...seg, index }])
+    setRoute(prev => [...prev, { ...seg, index }])
   }
 
   const removeLastSegment = () => {
@@ -63,7 +60,7 @@ function GamePage() {
     setRoute(prev => prev.slice(0, -1))
   }
 
-  if (phase === 'setup') return <SetupPhase onReady={() => setPhase('planning')} />
+  if (phase === 'setup') return <SetupPhase onReady={startNewGame} />
 
   if (phase === 'planning') return (
     <PlanningPhase
@@ -165,7 +162,7 @@ function PathTable({ result }) {
           {step.from} → {step.to} |
           {step.event} |
           <Badge bg={step.coinsChange >= 0 ? 'success' : 'danger'}>{step.coinsChange >= 0 ? '+' : ''}{step.coinsChange} coins</Badge>
-             Total: {step.total}
+          Total: {step.total}
         </ListGroup.Item>
       ))}
     </ListGroup>
