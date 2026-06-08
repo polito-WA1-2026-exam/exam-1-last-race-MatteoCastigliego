@@ -59,7 +59,6 @@ function GamePage() {
 
   const removeLastSegment = () => {
     if (route.length === 0) return
-    const last = route[route.length - 1]
     setRoute(prev => prev.slice(0, -1))
   }
 
@@ -110,25 +109,12 @@ function PlanningPhase({ startStation, endStation, segments, route, usedKeys, ti
       <Row className="mt-3 g-3">
         <Col md={6}>
           <h5>Available segments:</h5>
-          <ListGroup>
-            {segments.map((seg, i) => {
-              const isUsed = usedKeys.has(i)
-              return (
-                <ListGroup.Item action={!isUsed} disabled={isUsed} onClick={() => !isUsed && addSegment(seg, i)}>
-                  {seg.fromName} — {seg.toName}
-                </ListGroup.Item>
-              )
-            })}
-          </ListGroup>
+          <AvailableSegments segments={segments} usedKeys={usedKeys} addSegment={addSegment} />
         </Col>
 
         <Col md={6}>
           <h5>Your route:</h5>
-          <ListGroup className="mb-3">
-            {route.map((seg, i) => (
-              <ListGroup.Item key={i}>{seg.fromName} → {seg.toName}</ListGroup.Item>
-            ))}
-          </ListGroup>
+          <ChoosenRoute route={route} />
           <div className="d-flex gap-2">
             <Button variant="outline-secondary" onClick={removeLastSegment} disabled={route.length === 0}>Undo</Button>
             <Button variant="success" onClick={onSubmit} disabled={route.length === 0}>Submit route</Button>
@@ -139,32 +125,74 @@ function PlanningPhase({ startStation, endStation, segments, route, usedKeys, ti
   )
 }
 
+function AvailableSegments({ segments, usedKeys, addSegment }) {
+  return (<ListGroup>
+    {segments.map((seg, i) => {
+      const isUsed = usedKeys.has(i)
+      return (
+        <ListGroup.Item action={!isUsed} disabled={isUsed} onClick={() => !isUsed && addSegment(seg, i)}>
+          {seg.fromName} - {seg.toName}
+        </ListGroup.Item>
+      )
+    })}
+  </ListGroup>
+
+  )
+}
+
+function ChoosenRoute({ route }) {
+  return (
+    <ListGroup className="mb-3">
+      {route.map((seg, i) => (
+        <ListGroup.Item key={i}>{seg.fromName} → {seg.toName}</ListGroup.Item>
+      ))}
+    </ListGroup>
+  )
+}
+
 function ResultPhase({ result, onNewGame }) {
+  const [shown, setShown] = useState(1)
+
+
+  if (!result.valid) {
+    return (
+      <Container className="mt-4">
+        <h2>Result</h2>
+        <Alert variant="danger">Invalid or incomplete route. You scored 0 coins.</Alert>
+        <Button variant="primary" onClick={onNewGame}>Play again</Button>
+      </Container>
+    )
+  }
+
+  const done = shown >= result.steps.length
+
   return (
     <Container className="mt-4">
-      <h2>Result</h2>
-      {result.valid ? (
+      <h2>Your journey</h2>
+      <PathTable steps={result.steps.slice(0, shown)} />
+      {done ? (
         <>
-          <Alert variant="success">Valid route! Final score: <strong>{result.finalScore}</strong> coins</Alert>
-          <h5>Steps:</h5>
-          <PathTable result={result} />
+          <Alert variant="success" className="fs-5">
+            Final score: <strong>{result.finalScore}</strong> coins
+          </Alert>
+          <Button variant="primary" onClick={onNewGame}>Play again</Button>
         </>
       ) : (
-        <Alert variant="danger">Invalid or incomplete route. You scored 0 coins.</Alert>
+        <Button variant="outline-primary" onClick={() => setShown(s => s + 1)}>Next step</Button>
       )}
-      <Button variant="primary" onClick={onNewGame}>Back to home!</Button>
     </Container>
   )
 }
 
-function PathTable({ result }) {
+function PathTable({ steps }) {
   return (
     <ListGroup className="mb-3">
-      {result.steps.map((step, i) => (
+      {steps.map((step, i) => (
         <ListGroup.Item key={i}>
-          {step.from} → {step.to} |
-          {step.event} |
-          <Badge bg={step.coinsChange >= 0 ? 'success' : 'danger'}>{step.coinsChange >= 0 ? '+' : ''}{step.coinsChange} coins</Badge>
+          {step.from} ↔ {step.to} | {step.event} |{' '}
+          <Badge bg={step.coinsChange >= 0 ? 'success' : 'danger'}>
+            {step.coinsChange >= 0 ? '+' : ''}{step.coinsChange} coins
+          </Badge>{' '}
           Total: {step.total}
         </ListGroup.Item>
       ))}
