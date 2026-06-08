@@ -1,5 +1,3 @@
-
-
 async function createGame() {
   const res = await fetch(`http://localhost:3001/api/game`, { method: 'POST', credentials: 'include' })
   if (res.ok) return await res.json()
@@ -23,4 +21,10 @@ async function executeGame(gameId, segments) {
   throw new Error('Failed to execute game')
 }
 
-export { createGame, fetchSegments, executeGame }
+async function fetchRanking() {
+  const res = await fetch('http://localhost:3001/api/ranking', { credentials: 'include' })
+  if (res.ok) return await res.json()
+  throw new Error('Failed to fetch ranking')
+}
+
+export { createGame, fetchSegments, executeGame, fetchRanking }

@@ -11,6 +11,7 @@ import UserContext from './contexts/UserContext.js';
 import PublicPage from './components/PublicPage.jsx'
 import GamePage from './components/GamePage.jsx';
 import PlayPage from './components/PlayPage.jsx';
+import RankingPage from './components/RankingPage.jsx';
 import './App.css'
 
 
@@ -58,7 +59,5 @@ function App() {
   )
 }
 
-
-function RankingPage() { return <h1>Ranking</h1> }
 
 export default App
