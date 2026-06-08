@@ -106,7 +106,12 @@ const validateRoute = (segments, startId, endId, { lineSets, interchanges }) => 
   if (!segments?.length) return false;
 
   const route = [startId];
+  const usedSegments = new Set();
   for (const seg of segments) {
+    const segKey = pairKey(seg.from, seg.to);
+    if (usedSegments.has(segKey)) return false;   // segmento ripetuto
+    usedSegments.add(segKey);
+
     const last = route[route.length - 1];
     if (seg.from === last) route.push(seg.to);
     else if (seg.to === last) route.push(seg.from);
@@ -153,10 +158,11 @@ app.post('/api/sessions', passport.authenticate('local'), (req, res) => {
 
 // GET /api/sessions/current — check session
 app.get("/api/sessions/current", (req, res) => {
-  if(req.isAuthenticated()) {
-    res.json(req.user);}
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  }
   else
-    res.status(401).json({error: "Not authenticated"});
+    res.status(401).json({ error: "Not authenticated" });
 });
 
 // DELETE /api/sessions/current — logout
@@ -262,6 +268,10 @@ app.post('/api/game/:id/execute', isLoggedIn, async (req, res) => {
     if (game.score !== null) return res.status(400).json({ error: 'Game already completed!' });
 
     const segments = req.body.segments; // list of 'source-destination' pairs selected by the user, like: [{ from: id, to: id }, ...]
+    if (!Array.isArray(segments) ||
+      segments.some(s => !Number.isInteger(s?.from) || !Number.isInteger(s?.to))) {
+      return res.status(400).json({ error: 'Invalid segments!' });
+    }
     const events = await getEvents();
     const stationsOfLines = await getStationsOfLines();
 
@@ -290,4 +300,4 @@ app.post('/api/game/:id/execute', isLoggedIn, async (req, res) => {
 });
 
 /* start the server */
-app.listen(port, () => {console.log(`Server listening at http://localhost:${port}`)});
+app.listen(port, () => { console.log(`Server listening at http://localhost:${port}`) });
