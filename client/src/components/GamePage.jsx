@@ -160,8 +160,8 @@ function ResultPhase({ result, onNewGame }) {
 function PathTable({ result }) {
   return (
     <ListGroup className="mb-3">
-      {result.steps.map((step) => (
-        <ListGroup.Item >
+      {result.steps.map((step, i) => (
+        <ListGroup.Item key={i}>
           {step.from} → {step.to} |
           {step.event} |
           <Badge bg={step.coinsChange >= 0 ? 'success' : 'danger'}>{step.coinsChange >= 0 ? '+' : ''}{step.coinsChange} coins</Badge>

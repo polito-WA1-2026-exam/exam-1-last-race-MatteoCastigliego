@@ -12,7 +12,6 @@ function LoginForm(props) {
     const doSubmit = async (ev) => {
         ev.preventDefault()
         setErrormsg('')
-        console.log(username, password)
 
         try {
             // validations ...
