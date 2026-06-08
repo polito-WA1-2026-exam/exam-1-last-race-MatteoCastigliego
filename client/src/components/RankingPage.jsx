@@ -5,6 +5,7 @@ import { fetchRanking } from '../api/api'
 function RankingPage() {
   const [ranking, setRanking] = useState([])
 
+  // call to the relative API
   useEffect(() => {
     fetchRanking().then(data => setRanking(data))
   }, [])

@@ -15,7 +15,11 @@ function GamePage() {
   const [route, setRoute] = useState([])       // array di { from, to, fromName, toName }
   const [timeLeft, setTimeLeft] = useState(90)
   const [result, setResult] = useState(null)
+
+  // a ref to the timer is needed to stop the timer when a route is submitted
   const timerRef = useRef(null)
+
+  //a ref to the route is needed for validate the route in case the timer ends
   const routeRef = useRef([])
 
   const usedKeys = new Set(route.map(seg => seg.index))
@@ -87,7 +91,7 @@ function SetupPhase({ onReady }) {
   return (
     <Container className="mt-4">
       <h2>Setup</h2>
-      <p>Study the map carefully.:</p>
+      <p>Study the map carefully.</p>
       <img src={metroMap} alt="Metro map" className="metro-map" />
       <div className="mt-3">
         <Button variant="primary" onClick={onReady}>Play</Button>
@@ -114,7 +118,7 @@ function PlanningPhase({ startStation, endStation, segments, route, usedKeys, ti
 
         <Col md={6}>
           <h5>Your route:</h5>
-          <ChoosenRoute route={route} />
+          <ChosenRoute route={route} />
           <div className="d-flex gap-2">
             <Button variant="outline-secondary" onClick={removeLastSegment} disabled={route.length === 0}>Undo</Button>
             <Button variant="success" onClick={onSubmit} disabled={route.length === 0}>Submit route</Button>
@@ -130,7 +134,7 @@ function AvailableSegments({ segments, usedKeys, addSegment }) {
     {segments.map((seg, i) => {
       const isUsed = usedKeys.has(i)
       return (
-        <ListGroup.Item action={!isUsed} disabled={isUsed} onClick={() => !isUsed && addSegment(seg, i)}>
+        <ListGroup.Item action={!isUsed} disabled={isUsed} onClick={() => !isUsed && addSegment(seg, i)} key={i}>
           {seg.fromName} - {seg.toName}
         </ListGroup.Item>
       )
@@ -140,7 +144,7 @@ function AvailableSegments({ segments, usedKeys, addSegment }) {
   )
 }
 
-function ChoosenRoute({ route }) {
+function ChosenRoute({ route }) {
   return (
     <ListGroup className="mb-3">
       {route.map((seg, i) => (
@@ -153,7 +157,7 @@ function ChoosenRoute({ route }) {
 function ResultPhase({ result, onNewGame }) {
   const [shown, setShown] = useState(1)
 
-
+  // if the route is empty or the route is wrong, you get 0 coins and a message is shown
   if (!result.valid) {
     return (
       <Container className="mt-4">
@@ -164,6 +168,8 @@ function ResultPhase({ result, onNewGame }) {
     )
   }
 
+  // variable used to keep track of shown segments
+  // when it's 'true' the page shows total coins of the game and the user can start a new one
   const done = shown >= result.steps.length
 
   return (
