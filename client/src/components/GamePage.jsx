@@ -16,6 +16,7 @@ function GamePage() {
   const [timeLeft, setTimeLeft] = useState(90)
   const [result, setResult] = useState(null)
   const timerRef = useRef(null)
+  const routeRef = useRef([])
 
   const usedKeys = new Set(route.map(seg => seg.index))
 
@@ -29,13 +30,15 @@ function GamePage() {
     setPhase('planning')
   }
 
+  useEffect(() => { routeRef.current = route }, [route])
+
   useEffect(() => {
     if (phase !== 'planning') return
     timerRef.current = setInterval(() => {
       setTimeLeft(t => {
         if (t <= 1) {
           clearInterval(timerRef.current)
-          handleExecute([])
+          handleExecute(routeRef.current)
           return 0
         }
         return t - 1
