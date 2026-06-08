@@ -51,19 +51,6 @@ const getStationFromId = (id) => {
   });
 };
 
-const getLines = () => {
-  return new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM line';
-    db.all(sql, [], (err, rows) => {
-      if(err){
-        reject(err);
-      }else{
-        resolve(rows);
-      }
-    });
-  });
-};
-
 const getEvents = () => {
   return new Promise((resolve, reject) => {
     const sql = 'SELECT * FROM event';
@@ -149,4 +136,4 @@ const getSegments = () => {
   });
 };
 
-export { getUser, getStations, getLines, getEvents, getRankings, createGame, updateScore, getGame, getStationsOfLines, getSegments, getStationFromId };
+export { getUser, getStations, getEvents, getRankings, createGame, updateScore, getGame, getStationsOfLines, getSegments, getStationFromId };

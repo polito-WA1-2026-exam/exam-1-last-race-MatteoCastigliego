@@ -46,22 +46,6 @@ db.serialize(() => {
     score            INTEGER
   )`);
 
-  db.run(`CREATE TABLE IF NOT EXISTS game_segments (
-    id_game      INTEGER NOT NULL REFERENCES game(id),
-    step_number  INTEGER NOT NULL,
-    from_station INTEGER NOT NULL REFERENCES station(id),
-    to_station   INTEGER NOT NULL REFERENCES station(id),
-    PRIMARY KEY (id_game, step_number)
-  )`);
-
-  db.run(`CREATE TABLE IF NOT EXISTS game_steps (
-    id_game     INTEGER NOT NULL REFERENCES game(id),
-    step_number INTEGER NOT NULL,
-    id_event    INTEGER NOT NULL REFERENCES event(id),
-    coins       INTEGER NOT NULL,
-    PRIMARY KEY (id_game, step_number)
-  )`);
-
   db.run(`CREATE TABLE IF NOT EXISTS stations_of_a_line (
     id_line    INTEGER NOT NULL REFERENCES line(id),
     id_station INTEGER NOT NULL REFERENCES station(id),

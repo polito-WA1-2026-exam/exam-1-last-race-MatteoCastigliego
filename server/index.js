@@ -6,7 +6,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
 import './db.js';
-import { getUser, getStations, getLines, getEvents, getRankings, getGame, createGame, updateScore, getStationsOfLines, getSegments, getStationFromId } from './dao.js';
+import { getUser, getStations, getEvents, getRankings, getGame, createGame, updateScore, getStationsOfLines, getSegments, getStationFromId } from './dao.js';
 
 /* init */
 const app = express();
@@ -172,36 +172,6 @@ app.delete('/api/sessions/current', (req, res) => {
 
 // network routes, to access in these section the login is required 
 
-// GET /api/stations — get all stations
-app.get('/api/stations', isLoggedIn, async (req, res) => {
-  try {
-    const stations = await getStations();
-    res.json(stations);
-  } catch {
-    res.status(500).json({ error: 'Error during getting list of stations!' });
-  }
-});
-
-// GET /api/lines — get all lines
-app.get('/api/lines', isLoggedIn, async (req, res) => {
-  try {
-    const lines = await getLines();
-    res.json(lines);
-  } catch {
-    res.status(500).json({ error: 'Error during getting list of lines!' });
-  }
-});
-
-// GET /api/events — all events
-app.get('/api/events', isLoggedIn, async (req, res) => {
-  try {
-    const events = await getEvents();
-    res.json(events);
-  } catch {
-    res.status(500).json({ error: 'Error during getting list of events!' });
-  }
-});
-
 // GET /api/segments — all adjacent station pairs
 app.get('/api/segments', isLoggedIn, async (req, res) => {
   try {
@@ -219,17 +189,6 @@ app.get('/api/ranking', isLoggedIn, async (req, res) => {
     res.json(ranking);
   } catch {
     res.status(500).json({ error: 'Error during getting list of rankings!' });
-  }
-});
-
-// GET /api/game/:id — take a game
-app.get('/api/game/:id', isLoggedIn, async (req, res) => {
-  try {
-    const game = await getGame(req.params.id);
-    if (!game) return res.status(404).json({ error: 'Game not found!' });
-    res.json(game);
-  } catch {
-    res.status(500).json({ error: 'Error during getting the game!' });
   }
 });
 

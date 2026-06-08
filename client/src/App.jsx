@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { Navigate, Route, Routes, useNavigate } from 'react-router';
 import Footer from './components/Footer.jsx';

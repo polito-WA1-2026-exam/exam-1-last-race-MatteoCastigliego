@@ -148,7 +148,7 @@ function ChosenRoute({ route }) {
   return (
     <ListGroup className="mb-3">
       {route.map((seg, i) => (
-        <ListGroup.Item key={i}>{seg.fromName} → {seg.toName}</ListGroup.Item>
+        <ListGroup.Item key={i}>{seg.fromName} ↔ {seg.toName}</ListGroup.Item>
       ))}
     </ListGroup>
   )
