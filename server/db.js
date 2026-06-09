@@ -54,23 +54,23 @@ db.serialize(() => {
   )`);
 
   /* POPULATION DB: stations */
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Porta Nuova')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Porta Susa')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Marconi')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Fermi')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Bengasi')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Nizza')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Dante')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Re Umberto')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Vinzaglio')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Lingotto')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Bernini')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Massaua')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('XVII Dicembre')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Spezia')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Racconigi')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Rivoli')`);
-  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Marche')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Becketts')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Eau Rouge')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Parabolica')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Sainte Dévote')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Copse')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Casinò')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Lesmo 2')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Ascari')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Raidillon')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Stone')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Variante Alta')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Mirabeau')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Rascasse')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Lesmo 1')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('130R')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Wall of Champions')`);
+  db.run(`INSERT OR IGNORE INTO station (name) VALUES ('Tamburello')`);
 
   /* POPULATION DB: lines */
   db.run(`INSERT OR IGNORE INTO line (name, color) VALUES ('M1', 'red')`);
@@ -80,51 +80,52 @@ db.serialize(() => {
   db.run(`INSERT OR IGNORE INTO line (name, color) VALUES ('M5', 'purple')`);
 
   /* POPULATION DB: stations_of_a_line */
-  // M1 (id=1): Fermi - Massaua - Rivoli - Porta Susa
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (1, (SELECT id FROM station WHERE name='Fermi'), 1)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (1, (SELECT id FROM station WHERE name='Massaua'), 2)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (1, (SELECT id FROM station WHERE name='Rivoli'), 3)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (1, (SELECT id FROM station WHERE name='Porta Susa'), 4)`);
+  // M1 (id=1): Sainte Dévote - Mirabeau - Wall of Champions - Eau Rouge
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (1, (SELECT id FROM station WHERE name='Sainte Dévote'), 1)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (1, (SELECT id FROM station WHERE name='Mirabeau'), 2)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (1, (SELECT id FROM station WHERE name='Wall of Champions'), 3)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (1, (SELECT id FROM station WHERE name='Eau Rouge'), 4)`);
 
-  // M2 (id=2): XVII Dicembre - Porta Susa - Vinzaglio - Porta Nuova - Re Umberto
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='XVII Dicembre'), 1)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='Porta Susa'), 2)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='Vinzaglio'), 3)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='Porta Nuova'), 4)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='Re Umberto'), 5)`);
+  // M2 (id=2): Rascasse - Eau Rouge - Raidillon - Becketts - Ascari
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='Rascasse'), 1)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='Eau Rouge'), 2)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='Raidillon'), 3)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='Becketts'), 4)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (2, (SELECT id FROM station WHERE name='Ascari'), 5)`);
 
-  // M3 (id=3): Porta Susa - Marconi - Bernini - Nizza
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (3, (SELECT id FROM station WHERE name='Porta Susa'), 1)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (3, (SELECT id FROM station WHERE name='Marconi'), 2)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (3, (SELECT id FROM station WHERE name='Bernini'), 3)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (3, (SELECT id FROM station WHERE name='Nizza'), 4)`);
+  // M3 (id=3): Eau Rouge - Parabolica - Variante Alta - Casinò
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (3, (SELECT id FROM station WHERE name='Eau Rouge'), 1)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (3, (SELECT id FROM station WHERE name='Parabolica'), 2)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (3, (SELECT id FROM station WHERE name='Variante Alta'), 3)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (3, (SELECT id FROM station WHERE name='Casinò'), 4)`);
 
-  // M4 (id=4): Marconi - Dante - Spezia - Lingotto
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (4, (SELECT id FROM station WHERE name='Marconi'), 1)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (4, (SELECT id FROM station WHERE name='Dante'), 2)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (4, (SELECT id FROM station WHERE name='Spezia'), 3)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (4, (SELECT id FROM station WHERE name='Lingotto'), 4)`);
+  // M4 (id=4): Parabolica - Lesmo 2 - Lesmo 1 - Stone
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (4, (SELECT id FROM station WHERE name='Parabolica'), 1)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (4, (SELECT id FROM station WHERE name='Lesmo 2'), 2)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (4, (SELECT id FROM station WHERE name='Lesmo 1'), 3)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (4, (SELECT id FROM station WHERE name='Stone'), 4)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (4, (SELECT id FROM station WHERE name='Mirabeau'), 5)`);
 
-  // M5 (id=5): Vinzaglio - Racconigi - Marche - Lingotto - Bengasi
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='Vinzaglio'), 1)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='Racconigi'), 2)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='Marche'), 3)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='Lingotto'), 4)`);
-  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='Bengasi'), 5)`);
+  // M5 (id=5): Raidillon - 130R - Tamburello - Stone - Copse
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='Raidillon'), 1)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='130R'), 2)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='Tamburello'), 3)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='Stone'), 4)`);
+  db.run(`INSERT OR IGNORE INTO stations_of_a_line (id_line, id_station, position) VALUES (5, (SELECT id FROM station WHERE name='Copse'), 5)`);
 
   /* POPULATION DB: events */
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Smooth journey, no incidents', 0)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Pickpocketed on the train', -4)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Found a wallet on the seat', 3)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Technical failure, delayed and fined', -2)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Kind passenger pays for your ticket', 1)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Ticket inspection, no valid ticket', -3)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Forgotten bag full of coins on the seat', 4)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Wrong platform, lost time and money', -1)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Friendly conductor upgrades your seat', 2)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Emergency stop, missed connection fee', -2)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Street performer tips you back generously', 1)`);
-  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Signal failure, emergency exit fee', -4)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Clean lap, no incidents', 0)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Puncture on the main straight', -4)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Found a coin dropped from the grandstands', 3)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Engine failure, retired from the race', -2)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Slipstream boost, gaining ground fast', 1)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Drive-through penalty for cutting the chicane', -3)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Overcut works perfectly, bonus lap credit', 4)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Missed the braking zone, lost positions', -1)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('DRS activated, flying through sector 2', 2)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Safety car deployed, time and coins lost', -2)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Fastest lap bonus, extra coins awarded', 1)`);
+  db.run(`INSERT OR IGNORE INTO event (description, coins) VALUES ('Red flag, race stopped, heavy penalty', -4)`);
 
   /* POPULATION DB: users */
   db.run(`INSERT OR IGNORE INTO user (name, surname, username, password, salt) VALUES ('Antonia', 'Verdi', 'antoniaverdi', '0d2ed70bb3f8ee4fbf1f6a01c97d79a1', 'c74003003886c98df606da379a71fae4')`);

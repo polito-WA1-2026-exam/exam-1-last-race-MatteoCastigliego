@@ -1,107 +1,159 @@
-<svg viewBox="0 0 910 590" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif" style=""><defs><mask id="imagine-text-gaps-np3ina" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="910" height="590" fill="white"/><rect x="302.43475341796875" y="11.45301628112793" width="296.7510986328125" height="26.256378173828125" fill="black" rx="2"/><rect x="41.69329833984375" y="66.87181091308594" width="32.65425682067871" height="17.601119995117188" fill="black" rx="2"/><rect x="108.8154525756836" y="128.87179565429688" width="46.36906814575195" height="17.601119995117188" fill="black" rx="2"/><rect x="198.06036376953125" y="198.87181091308594" width="31.927406311035156" height="17.601119995117188" fill="black" rx="2"/><rect x="76.5836181640625" y="273.8717956542969" width="45.90093994140625" height="17.601119995117188" fill="black" rx="2"/><rect x="842.8099365234375" y="170.87179565429688" width="61.25238800048828" height="17.601119995117188" fill="black" rx="2"/><rect x="275.4167785644531" y="446.8717956542969" width="38.62521743774414" height="17.601119995117188" fill="black" rx="2"/><rect x="281.9855041503906" y="516.8717651367188" width="32.01447677612305" height="17.601119995117188" fill="black" rx="2"/><rect x="462.8142395019531" y="364.8717956542969" width="35.30997085571289" height="17.601119995117188" fill="black" rx="2"/><rect x="591.7806396484375" y="364.8717956542969" width="36.43870544433594" height="17.601119995117188" fill="black" rx="2"/><rect x="522.738525390625" y="324.8717956542969" width="50.572025299072266" height="17.601119995117188" fill="black" rx="2"/><rect x="609.4815673828125" y="364.8717956542969" width="41.97850036621094" height="17.601119995117188" fill="black" rx="2"/><rect x="798.8826904296875" y="504.8717956542969" width="42.28391647338867" height="17.601119995117188" fill="black" rx="2"/><rect x="311.1741027832031" y="269.8717956542969" width="58.45230484008789" height="17.601119995117188" fill="black" rx="2"/><rect x="317.018310546875" y="261.3447265625" width="46.59003829956055" height="15.128189086914062" fill="black" rx="2"/><rect x="472.9225158691406" y="273.8717956542969" width="52.99092102050781" height="17.601119995117188" fill="black" rx="2"/><rect x="628.6914672851562" y="273.8717956542969" width="62.61699676513672" height="17.601119995117188" fill="black" rx="2"/><rect x="257.32177734375" y="380.8717956542969" width="47.53029251098633" height="17.601119995117188" fill="black" rx="2"/><rect x="773.9999389648438" y="420.8717956542969" width="48.203163146972656" height="17.601119995117188" fill="black" rx="2"/><rect x="64.15939331054688" y="367.63531494140625" width="56.635433197021484" height="18.83758544921875" fill="black" rx="2"/><rect x="66" y="387.63531494140625" width="63.518253326416016" height="18.83758544921875" fill="black" rx="2"/><rect x="66" y="407.63531494140625" width="50.503501892089844" height="18.83758544921875" fill="black" rx="2"/><rect x="66" y="427.6353454589844" width="63.66851043701172" height="18.83758544921875" fill="black" rx="2"/><rect x="66" y="447.6353454589844" width="62.61654281616211" height="18.83758544921875" fill="black" rx="2"/><rect x="66" y="467.6353454589844" width="60.088558197021484" height="18.83758544921875" fill="black" rx="2"/><rect x="66" y="489.63531494140625" width="71.78583145141602" height="18.83758544921875" fill="black" rx="2"/><rect x="64.76353454589844" y="511.63531494140625" width="73.49202728271484" height="18.83758544921875" fill="black" rx="2"/><rect x="66" y="533.6353149414062" width="49.278900146484375" height="18.83758544921875" fill="black" rx="2"/></mask></defs>
-  <rect width="900" height="580" fill="#1a1a2e" style="fill:rgb(26, 26, 46);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="450" y="32" text-anchor="middle" fill="white" font-size="17" font-weight="700" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:17px;font-weight:700;text-anchor:middle;dominant-baseline:auto">LAST RACE – Underground Network</text>
+<svg viewBox="0 0 910 590" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif">
+  <rect width="910" height="590" fill="#0c0c0c"/>
 
-  <!-- ══ LINES ══ -->
+  <!-- Subtle grid -->
+  <line x1="0" y1="148" x2="910" y2="148" stroke="#161616" stroke-width="0.8" stroke-dasharray="4,12"/>
+  <line x1="0" y1="295" x2="910" y2="295" stroke="#1a1a1a" stroke-width="0.8" stroke-dasharray="4,12"/>
+  <line x1="0" y1="443" x2="910" y2="443" stroke="#161616" stroke-width="0.8" stroke-dasharray="4,12"/>
+  <line x1="152" y1="0" x2="152" y2="590" stroke="#161616" stroke-width="0.8" stroke-dasharray="4,12"/>
+  <line x1="304" y1="0" x2="304" y2="590" stroke="#161616" stroke-width="0.8" stroke-dasharray="4,12"/>
+  <line x1="456" y1="0" x2="456" y2="590" stroke="#161616" stroke-width="0.8" stroke-dasharray="4,12"/>
+  <line x1="608" y1="0" x2="608" y2="590" stroke="#161616" stroke-width="0.8" stroke-dasharray="4,12"/>
+  <line x1="760" y1="0" x2="760" y2="590" stroke="#161616" stroke-width="0.8" stroke-dasharray="4,12"/>
 
-  <!-- M1 Red: Fermi→Massaua→Rivoli→Porta Susa -->
-  <polyline points="80,90 160,150 240,220 340,300" fill="none" stroke="#e74c3c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" mask="url(#imagine-text-gaps-np3ina)" style="fill:none;stroke:rgb(231, 76, 60);color:rgb(0, 0, 0);stroke-width:7px;stroke-linecap:round;stroke-linejoin:round;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- F1 red stripe + border -->
+  <rect x="3" y="3" width="904" height="4" fill="#dc0000" opacity="0.8" rx="2"/>
+  <rect x="3" y="3" width="904" height="584" fill="none" stroke="#dc0000" stroke-width="1" stroke-opacity="0.25" rx="3"/>
 
-  <!-- M2 Blue: XVII Dicembre→Porta Susa→Vinzaglio→Porta Nuova→Re Umberto -->
-  <polyline points="100,300 340,300 500,300 660,300 820,180" fill="none" stroke="#3498db" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" mask="url(#imagine-text-gaps-np3ina)" style="fill:none;stroke:rgb(52, 152, 219);color:rgb(0, 0, 0);stroke-width:7px;stroke-linecap:round;stroke-linejoin:round;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="455" y="34" text-anchor="middle" fill="white" font-size="16" font-weight="700" letter-spacing="2">LAST RACE — Corners Network</text>
 
-  <!-- M3 Green: Porta Susa→Marconi→Bernini→Nizza -->
-  <polyline points="340,300 340,390 340,460 340,530" fill="none" stroke="#27ae60" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="fill:none;stroke:rgb(39, 174, 96);color:rgb(0, 0, 0);stroke-width:7px;stroke-linecap:round;stroke-linejoin:round;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- M3 Green — drawn first so M5 crosses over it -->
+  <path d="M 380,295
+           C 448,268 572,365 685,435
+           C 732,458 762,476 795,496
+           C 835,520 858,534 878,548"
+        fill="none" stroke="#0c1a0c" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 380,295
+           C 448,268 572,365 685,435
+           C 732,458 762,476 795,496
+           C 835,520 858,534 878,548"
+        fill="none" stroke="#2ecc71" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- M4 Yellow: Marconi→Dante→Spezia→Lingotto -->
-  <polyline points="340,390 480,390 610,390 740,430" fill="none" stroke="#f39c12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="fill:none;stroke:rgb(243, 156, 18);color:rgb(0, 0, 0);stroke-width:7px;stroke-linecap:round;stroke-linejoin:round;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- M4 Yellow — Interlagos hairpin: tight curve along the bottom -->
+  <path d="M 685,435
+           C 648,455 605,466 548,468
+           C 492,470 440,472 390,474
+           C 346,476 308,478 270,480"
+        fill="none" stroke="#1a1500" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 685,435
+           C 648,455 605,466 548,468
+           C 492,470 440,472 390,474
+           C 346,476 308,478 270,480"
+        fill="none" stroke="#f1c40f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- M5 Purple: Vinzaglio→Racconigi→Marche→Lingotto→Bengasi -->
-  <polyline points="500,300 560,350 630,390 740,430 820,500" fill="none" stroke="#9b59b6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" mask="url(#imagine-text-gaps-np3ina)" style="fill:none;stroke:rgb(155, 89, 182);color:rgb(0, 0, 0);stroke-width:7px;stroke-linecap:round;stroke-linejoin:round;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <!-- M1 Red — Monaco chicane: S-curve into Porta Susa -->
+  <path d="M 72,85
+           C 115,60  162,190  182,152
+           C 205,112  252,238  315,252
+           C 344,260  365,278  380,295"
+        fill="none" stroke="#1a0000" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 72,85
+           C 115,60  162,190  182,152
+           C 205,112  252,238  315,252
+           C 344,260  365,278  380,295"
+        fill="none" stroke="#e74c3c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- ══ REGULAR STATIONS ══ -->
+  <!-- M2 Blue — Eau Rouge: dips DOWN then sweeps hard UP to Vinzaglio -->
+  <path d="M 72,295
+           C 185,296  300,296  380,295
+           C 402,358  528,100  660,155
+           C 706,196  752,242  800,270
+           C 838,252  860,230  878,208"
+        fill="none" stroke="#00061a" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 72,295
+           C 185,296  300,296  380,295
+           C 402,358  528,100  660,155
+           C 706,196  752,242  800,270
+           C 838,252  860,230  878,208"
+        fill="none" stroke="#3498db" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- M1 -->
-  <circle cx="80" cy="90" r="7" fill="white" stroke="#e74c3c" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(231, 76, 60);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="58" y="80" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Fermi</text>
+  <!-- M5 Purple — Suzuka sweep: arcs down-left and CROSSES M3 -->
+  <path d="M 660,155
+           C 632,205  590,255  548,295
+           C 514,328  474,362  428,395
+           C 374,432  322,458  270,480
+           C 228,502  188,525  148,548"
+        fill="none" stroke="#0a001a" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 660,155
+           C 632,205  590,255  548,295
+           C 514,328  474,362  428,395
+           C 374,432  322,458  270,480
+           C 228,502  188,525  148,548"
+        fill="none" stroke="#9b59b6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <circle cx="160" cy="150" r="7" fill="white" stroke="#e74c3c" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(231, 76, 60);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="132" y="142" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Massaua</text>
+  <!-- M4 Yellow extension — Lingotto up to Massaua (crosses M2 blue) -->
+  <path d="M 270,480 C 255,390 220,290 182,152"
+        fill="none" stroke="#1a1500" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 270,480 C 255,390 220,290 182,152"
+        fill="none" stroke="#f1c40f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <circle cx="240" cy="220" r="7" fill="white" stroke="#e74c3c" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(231, 76, 60);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="214" y="212" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Rivoli</text>
+  <!-- M1 stations -->
+  <circle cx="72" cy="85" r="6" fill="white" stroke="#e74c3c" stroke-width="2.5"/>
+  <text x="50" y="75" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Sainte Dévote</text>
 
-  <!-- M2 -->
-  <circle cx="100" cy="300" r="7" fill="white" stroke="#3498db" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(52, 152, 219);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="100" y="287" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">XVII Dic.</text>
+  <circle cx="315" cy="252" r="6" fill="white" stroke="#e74c3c" stroke-width="2.5"/>
+  <text x="290" y="242" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Wall of Champions</text>
 
-  <circle cx="820" cy="180" r="7" fill="white" stroke="#3498db" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(52, 152, 219);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="846.81" y="184" text-anchor="start" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:start;dominant-baseline:auto">Re Umberto</text>
+  <!-- M2 stations -->
+  <circle cx="72" cy="295" r="6" fill="white" stroke="#3498db" stroke-width="2.5"/>
+  <text x="72" y="282" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Rascasse</text>
 
-  <!-- M3 -->
-  <circle cx="340" cy="460" r="7" fill="white" stroke="#27ae60" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(39, 174, 96);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="310" y="460" text-anchor="end" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:end;dominant-baseline:auto">Bernini</text>
+  <circle cx="800" cy="270" r="6" fill="white" stroke="#3498db" stroke-width="2.5"/>
+  <text x="800" y="257" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Becketts</text>
 
-  <circle cx="340" cy="530" r="7" fill="white" stroke="#27ae60" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(39, 174, 96);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="310" y="530" text-anchor="end" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:end;dominant-baseline:auto">Nizza</text>
+  <circle cx="878" cy="208" r="6" fill="white" stroke="#3498db" stroke-width="2.5"/>
+  <text x="878" y="195" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Ascari</text>
 
-  <!-- M4 -->
-  <circle cx="480" cy="390" r="7" fill="white" stroke="#f39c12" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(243, 156, 18);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="480" y="378" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Dante</text>
+  <!-- M3 stations -->
+  <circle cx="795" cy="496" r="6" fill="white" stroke="#2ecc71" stroke-width="2.5"/>
+  <text x="820" y="500" text-anchor="start" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Variante Alta</text>
 
-  <circle cx="610" cy="390" r="7" fill="white" stroke="#f39c12" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(243, 156, 18);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="610" y="378" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Spezia</text>
+  <circle cx="878" cy="548" r="6" fill="white" stroke="#2ecc71" stroke-width="2.5"/>
+  <text x="878" y="562" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Casinò</text>
 
-  <!-- M5 -->
-  <circle cx="560" cy="350" r="7" fill="white" stroke="#9b59b6" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(155, 89, 182);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="548" y="338" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Racconigi</text>
+  <!-- M4 stations -->
+  <circle cx="548" cy="468" r="6" fill="white" stroke="#f1c40f" stroke-width="2.5"/>
+  <text x="548" y="455" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Lesmo 2</text>
 
-  <circle cx="630" cy="390" r="7" fill="white" stroke="#9b59b6" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(155, 89, 182);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="630" y="378" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Marche</text>
+  <circle cx="390" cy="474" r="6" fill="white" stroke="#f1c40f" stroke-width="2.5"/>
+  <text x="390" y="461" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Lesmo 1</text>
 
-  <circle cx="820" cy="500" r="7" fill="white" stroke="#9b59b6" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(155, 89, 182);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="820" y="518" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Bengasi</text>
+  <!-- M5 stations -->
+  <circle cx="548" cy="295" r="6" fill="white" stroke="#9b59b6" stroke-width="2.5"/>
+  <text x="548" y="282" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">130R</text>
 
-  <!-- ══ INTERCHANGE STATIONS ══ -->
+  <circle cx="428" cy="395" r="6" fill="white" stroke="#9b59b6" stroke-width="2.5"/>
+  <text x="403" y="399" text-anchor="end" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Tamburello</text>
 
-  <!-- Porta Susa: M1+M2+M3 (TRIPLE) -->
-  <circle cx="340" cy="300" r="14" fill="#1a1a2e" stroke="white" stroke-width="4" style="fill:rgb(26, 26, 46);stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:4px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="340" y="283" text-anchor="middle" fill="white" font-size="10" font-weight="700" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:700;text-anchor:middle;dominant-baseline:auto">Porta Susa</text>
-  <text x="340" y="272" text-anchor="middle" fill="#f1c40f" font-size="8" style="fill:rgb(241, 196, 15);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:8px;font-weight:400;text-anchor:middle;dominant-baseline:auto">M1·M2·M3</text>
+  <circle cx="148" cy="548" r="6" fill="white" stroke="#9b59b6" stroke-width="2.5"/>
+  <text x="148" y="562" text-anchor="middle" fill="#e5e7eb" font-size="10" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Copse</text>
 
-  <!-- Vinzaglio: M2+M5 -->
-  <circle cx="500" cy="300" r="12" fill="#1a1a2e" stroke="white" stroke-width="3" style="fill:rgb(26, 26, 46);stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="500" y="287" text-anchor="middle" fill="white" font-size="10" font-weight="700" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:700;text-anchor:middle;dominant-baseline:auto">Vinzaglio</text>
+  <!-- Mirabeau interchange M1+M4 -->
+  <circle cx="182" cy="152" r="13" fill="#0c0c0c" stroke="white" stroke-width="3"/>
+  <circle cx="182" cy="152" r="5" fill="white"/>
+  <text x="182" y="135" text-anchor="middle" fill="#f1c40f" font-size="8" letter-spacing="1">M1·M4</text>
+  <text x="182" y="126" text-anchor="middle" fill="white" font-size="10" font-weight="700" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Mirabeau</text>
 
-  <!-- Porta Nuova: M2 only endpoint... wait it's just M2 here -->
-  <circle cx="660" cy="300" r="7" fill="white" stroke="#3498db" stroke-width="3" style="fill:rgb(255, 255, 255);stroke:rgb(52, 152, 219);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="660" y="287" text-anchor="middle" fill="white" font-size="10" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:400;text-anchor:middle;dominant-baseline:auto">Porta Nuova</text>
+  <!-- ══ INTERCHANGE STATIONS — bull's-eye on top ══ -->
 
-  <!-- Marconi: M3+M4 -->
-  <circle cx="340" cy="390" r="12" fill="#1a1a2e" stroke="white" stroke-width="3" style="fill:rgb(26, 26, 46);stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="300" y="394" text-anchor="end" fill="white" font-size="10" font-weight="700" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:700;text-anchor:end;dominant-baseline:auto">Marconi</text>
+  <!-- Eau Rouge triple -->
+  <circle cx="380" cy="295" r="16" fill="#0c0c0c" stroke="white" stroke-width="3.5"/>
+  <circle cx="380" cy="295" r="7" fill="white"/>
+  <text x="380" y="272" text-anchor="middle" fill="#f1c40f" font-size="8" letter-spacing="1">M1·M2·M3</text>
+  <text x="380" y="283" text-anchor="middle" fill="white" font-size="10" font-weight="700" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Eau Rouge</text>
 
-  <!-- Lingotto: M4+M5 -->
-  <circle cx="740" cy="430" r="12" fill="#1a1a2e" stroke="white" stroke-width="3" style="fill:rgb(26, 26, 46);stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="778" y="434" text-anchor="start" fill="white" font-size="10" font-weight="700" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:10px;font-weight:700;text-anchor:start;dominant-baseline:auto">Lingotto</text>
+  <!-- Raidillon double -->
+  <circle cx="660" cy="155" r="13" fill="#0c0c0c" stroke="white" stroke-width="3"/>
+  <circle cx="660" cy="155" r="5" fill="white"/>
+  <text x="660" y="141" text-anchor="middle" fill="white" font-size="10" font-weight="700" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Raidillon</text>
 
-  <!-- ══ LEGEND ══ -->
-  <rect x="18" y="360" width="148" height="195" rx="6" fill="#ffffff18" style="fill:rgba(255, 255, 255, 0.094);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="92" y="382" text-anchor="middle" fill="white" font-size="12" font-weight="700" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:12px;font-weight:700;text-anchor:middle;dominant-baseline:auto">Legenda</text>
-  <line x1="28" y1="398" x2="62" y2="398" stroke="#e74c3c" stroke-width="5" style="fill:rgb(0, 0, 0);stroke:rgb(231, 76, 60);color:rgb(0, 0, 0);stroke-width:5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="70" y="402" fill="white" font-size="11" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">M1 – Rossa</text>
-  <line x1="28" y1="418" x2="62" y2="418" stroke="#3498db" stroke-width="5" style="fill:rgb(0, 0, 0);stroke:rgb(52, 152, 219);color:rgb(0, 0, 0);stroke-width:5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="70" y="422" fill="white" font-size="11" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">M2 – Blu</text>
-  <line x1="28" y1="438" x2="62" y2="438" stroke="#27ae60" stroke-width="5" style="fill:rgb(0, 0, 0);stroke:rgb(39, 174, 96);color:rgb(0, 0, 0);stroke-width:5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="70" y="442" fill="white" font-size="11" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">M3 – Verde</text>
-  <line x1="28" y1="458" x2="62" y2="458" stroke="#f39c12" stroke-width="5" style="fill:rgb(0, 0, 0);stroke:rgb(243, 156, 18);color:rgb(0, 0, 0);stroke-width:5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="70" y="462" fill="white" font-size="11" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">M4 – Gialla</text>
-  <line x1="28" y1="478" x2="62" y2="478" stroke="#9b59b6" stroke-width="5" style="fill:rgb(0, 0, 0);stroke:rgb(155, 89, 182);color:rgb(0, 0, 0);stroke-width:5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="70" y="482" fill="white" font-size="11" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">M5 – Viola</text>
-  <circle cx="45" cy="500" r="9" fill="#1a1a2e" stroke="white" stroke-width="3" style="fill:rgb(26, 26, 46);stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="70" y="504" fill="white" font-size="11" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">Interscambio</text>
-  <circle cx="45" cy="522" r="9" fill="#1a1a2e" stroke="white" stroke-width="4" style="fill:rgb(26, 26, 46);stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:4px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="70" y="526" fill="white" font-size="11" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">Triplo intersc.</text>
-  <circle cx="45" cy="544" r="5" fill="white" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
-  <text x="70" y="548" fill="white" font-size="11" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, sans-serif;font-size:11px;font-weight:400;text-anchor:start;dominant-baseline:auto">Stazione</text>
+  <!-- Parabolica double -->
+  <circle cx="685" cy="435" r="13" fill="#0c0c0c" stroke="white" stroke-width="3"/>
+  <circle cx="685" cy="435" r="5" fill="white"/>
+  <text x="710" y="439" text-anchor="start" fill="white" font-size="10" font-weight="700" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Parabolica</text>
+
+  <!-- Stone double -->
+  <circle cx="270" cy="480" r="13" fill="#0c0c0c" stroke="white" stroke-width="3"/>
+  <circle cx="270" cy="480" r="5" fill="white"/>
+  <text x="245" y="484" text-anchor="end" fill="white" font-size="10" font-weight="700" stroke="#0c0c0c" stroke-width="3" paint-order="stroke">Stone</text>
 </svg>
