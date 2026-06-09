@@ -3,6 +3,7 @@ import { Container, Button, Badge, ListGroup, Row, Col, Alert } from 'react-boot
 import { useNavigate } from 'react-router'
 import metroMap from '../assets/metro_map.svg'
 import metroMapNoLines from '../assets/metro_map_no_lines.svg'
+import f1Grid from '../assets/f1_grid.jpg'
 import { createGame, fetchSegments, executeGame } from '../api/api'
 
 function GamePage() {
@@ -23,6 +24,8 @@ function GamePage() {
   const routeRef = useRef([])
 
   const usedKeys = new Set(route.map(seg => seg.index))
+
+  const bgStyle = { '--f1-grid': `url(${f1Grid})` }
 
   const startNewGame = async () => {
     const game = await createGame()
@@ -66,7 +69,7 @@ function GamePage() {
     setRoute(prev => prev.slice(0, -1))
   }
 
-  if (phase === 'setup') return <SetupPhase onReady={startNewGame} />
+  if (phase === 'setup') return <SetupPhase onReady={startNewGame} bgStyle={bgStyle} />
 
   if (phase === 'planning') return (
     <PlanningPhase
@@ -79,92 +82,138 @@ function GamePage() {
       addSegment={addSegment}
       removeLastSegment={removeLastSegment}
       onSubmit={() => { clearInterval(timerRef.current); handleExecute(route) }}
+      bgStyle={bgStyle}
     />
   )
 
   if (phase === 'result') return (
-    <ResultPhase result={result} onNewGame={() => navigate('/play')} />
+    <ResultPhase result={result} onNewGame={() => navigate('/play')} bgStyle={bgStyle} />
   )
 }
 
-function SetupPhase({ onReady }) {
+function SetupPhase({ onReady, bgStyle }) {
   return (
-    <Container className="mt-4">
-      <h2>Setup</h2>
-      <p>Study the map carefully.</p>
-      <img src={metroMap} alt="Metro map" className="metro-map" />
-      <div className="mt-3">
-        <Button variant="primary" onClick={onReady}>Play</Button>
-      </div>
-    </Container>
+    <div className="game-page-bg" style={bgStyle}>
+      <Container className="pt-4 pb-5">
+        <div className="f1-eyebrow mb-1">Phase 1 of 3</div>
+        <h2 className="game-title">Setup</h2>
+        <div className="f1-red-line-left mb-4"></div>
+        <p className="game-text">Study the map carefully.</p>
+        <img src={metroMap} alt="Metro map" className="metro-map mb-4" />
+        <div>
+          <Button className="f1-btn" onClick={onReady}>Play</Button>
+        </div>
+      </Container>
+    </div>
   )
 }
 
-function PlanningPhase({ startStation, endStation, segments, route, usedKeys, timeLeft, addSegment, removeLastSegment, onSubmit }) {
+function PlanningPhase({ startStation, endStation, segments, route, usedKeys, timeLeft, addSegment, removeLastSegment, onSubmit, bgStyle }) {
   return (
-    <Container className="mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2>Planning</h2>
-        <Badge bg={timeLeft < 20 ? 'danger' : 'secondary'} className="fs-5">⏱ {timeLeft}s</Badge>
-      </div>
-      <p>From <strong>{startStation.name}</strong> to <strong>{endStation.name}</strong>.</p>
-      <img src={metroMapNoLines} alt="Metro map - no lines" className="metro-map" />
+    <div className="game-page-bg" style={bgStyle}>
+      <Container className="pt-4 pb-5">
 
-      <Row className="mt-3 g-3">
-        <Col md={6}>
-          <h5>Available segments:</h5>
-          <AvailableSegments segments={segments} usedKeys={usedKeys} addSegment={addSegment} />
-        </Col>
-
-        <Col md={6}>
-          <h5>Your route:</h5>
-          <ChosenRoute route={route} />
-          <div className="d-flex gap-2">
-            <Button variant="outline-secondary" onClick={removeLastSegment} disabled={route.length === 0}>Undo</Button>
-            <Button variant="success" onClick={onSubmit} disabled={route.length === 0}>Submit route</Button>
+        {/* Header row */}
+        <div className="d-flex justify-content-between align-items-start mb-2">
+          <div>
+            <div className="f1-eyebrow mb-1">Phase 2 of 3</div>
+            <h2 className="game-title mb-0">Planning</h2>
           </div>
-        </Col>
-      </Row>
-    </Container>
+          <div className={`f1-timer${timeLeft < 20 ? ' f1-timer-urgent' : ''}`}>
+            <div className="f1-timer-label">TIME</div>
+            <div className="f1-timer-value">{timeLeft}s</div>
+          </div>
+        </div>
+        <div className="f1-red-line-left mb-3"></div>
+
+        {/* Route info */}
+        <div className="f1-route-info mb-4">
+          <div className="f1-route-station">
+            <span className="f1-station-label">From</span>
+            <span className="f1-station-name">{startStation.name}</span>
+          </div>
+          <div className="f1-route-arrow">→</div>
+          <div className="f1-route-station">
+            <span className="f1-station-label">To</span>
+            <span className="f1-station-name">{endStation.name}</span>
+          </div>
+        </div>
+
+        <img src={metroMapNoLines} alt="Metro map - no lines" className="metro-map mb-4" />
+
+        <Row className="g-4">
+          <Col md={6}>
+            <div className="f1-panel-label">Available segments:</div>
+            <AvailableSegments segments={segments} usedKeys={usedKeys} addSegment={addSegment} />
+          </Col>
+
+          <Col md={6}>
+            <div className="f1-panel-label">Your route:</div>
+            <ChosenRoute route={route} />
+            <div className="d-flex gap-2 mt-3">
+              <Button className="f1-btn-outline" onClick={removeLastSegment} disabled={route.length === 0}>Undo</Button>
+              <Button className="f1-success-btn" onClick={onSubmit} disabled={route.length === 0}>Submit route</Button>
+            </div>
+          </Col>
+        </Row>
+
+      </Container>
+    </div>
   )
 }
 
 function AvailableSegments({ segments, usedKeys, addSegment }) {
-  return (<ListGroup>
-    {segments.map((seg, i) => {
-      const isUsed = usedKeys.has(i)
-      return (
-        <ListGroup.Item action={!isUsed} disabled={isUsed} onClick={() => !isUsed && addSegment(seg, i)} key={i}>
-          {seg.fromName} - {seg.toName}
-        </ListGroup.Item>
-      )
-    })}
-  </ListGroup>
-
+  return (
+    <div className="f1-segment-list">
+      {segments.map((seg, i) => {
+        const isUsed = usedKeys.has(i)
+        return (
+          <div
+            key={i}
+            className={`f1-segment-item${isUsed ? ' f1-segment-used' : ''}`}
+            onClick={() => !isUsed && addSegment(seg, i)}
+          >
+            <span className="f1-segment-dot"></span>
+            <span className="f1-segment-text">{seg.fromName} — {seg.toName}</span>
+            {isUsed && <span className="f1-segment-used-badge">used</span>}
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
 function ChosenRoute({ route }) {
+  if (route.length === 0) {
+    return <div className="f1-route-empty">No segments selected yet.</div>
+  }
   return (
-    <ListGroup className="mb-3">
+    <div className="f1-chosen-route">
       {route.map((seg, i) => (
-        <ListGroup.Item key={i}>{seg.fromName} ↔ {seg.toName}</ListGroup.Item>
+        <div key={i} className="f1-chosen-item">
+          <span className="f1-chosen-num">{String(i + 1).padStart(2, '0')}</span>
+          <span className="f1-chosen-text">{seg.fromName} ↔ {seg.toName}</span>
+        </div>
       ))}
-    </ListGroup>
+    </div>
   )
 }
 
-function ResultPhase({ result, onNewGame }) {
+function ResultPhase({ result, onNewGame, bgStyle }) {
   const [shown, setShown] = useState(1)
 
   // if the route is empty or the route is wrong, you get 0 coins and a message is shown
   if (!result.valid) {
     return (
-      <Container className="mt-4">
-        <h2>Result</h2>
-        <Alert variant="danger">Invalid or incomplete route. You scored 0 coins.</Alert>
-        <Button variant="primary" onClick={onNewGame}>Play again</Button>
-      </Container>
+      <div className="game-page-bg" style={bgStyle}>
+        <Container className="pt-4 pb-5">
+          <div className="f1-eyebrow mb-1">Phase 3 of 3</div>
+          <h2 className="game-title">Result</h2>
+          <div className="f1-red-line-left mb-4"></div>
+          <Alert variant="danger">Invalid or incomplete route. You scored 0 coins.</Alert>
+          <Button className="f1-btn" onClick={onNewGame}>Play again</Button>
+        </Container>
+      </div>
     )
   }
 
@@ -173,36 +222,46 @@ function ResultPhase({ result, onNewGame }) {
   const done = shown >= result.steps.length
 
   return (
-    <Container className="mt-4">
-      <h2>Your journey</h2>
-      <PathTable steps={result.steps.slice(0, shown)} />
-      {done ? (
-        <>
-          <Alert variant="success" className="fs-5">
-            Final score: <strong>{result.finalScore}</strong> coins
-          </Alert>
-          <Button variant="primary" onClick={onNewGame}>Play again</Button>
-        </>
-      ) : (
-        <Button variant="outline-primary" onClick={() => setShown(s => s + 1)}>Next step</Button>
-      )}
-    </Container>
+    <div className="game-page-bg" style={bgStyle}>
+      <Container className="pt-4 pb-5">
+        <div className="f1-eyebrow mb-1">Phase 3 of 3</div>
+        <h2 className="game-title">Your journey</h2>
+        <div className="f1-red-line-left mb-4"></div>
+        <PathTable steps={result.steps.slice(0, shown)} />
+        {done ? (
+          <>
+            <div className="f1-final-score">
+              Final score: <span className="f1-final-score-value">{result.finalScore}</span> coins
+            </div>
+            <Button className="f1-btn mt-3" onClick={onNewGame}>Play again</Button>
+          </>
+        ) : (
+          <Button className="f1-btn-outline" onClick={() => setShown(s => s + 1)}>Next step</Button>
+        )}
+      </Container>
+    </div>
   )
 }
 
 function PathTable({ steps }) {
   return (
-    <ListGroup className="mb-3">
+    <div className="f1-steps-list mb-4">
       {steps.map((step, i) => (
-        <ListGroup.Item key={i}>
-          {step.from} ↔ {step.to} | {step.event} |{' '}
-          <Badge bg={step.coinsChange >= 0 ? 'success' : 'danger'}>
-            {step.coinsChange >= 0 ? '+' : ''}{step.coinsChange} coins
-          </Badge>{' '}
-          Total: {step.total}
-        </ListGroup.Item>
+        <div key={i} className="f1-step-card">
+          <div className="f1-step-num">{String(i + 1).padStart(2, '0')}</div>
+          <div className="f1-step-body">
+            <div className="f1-step-route">{step.from} ↔ {step.to}</div>
+            <div className="f1-step-event">{step.event}</div>
+          </div>
+          <div className="f1-step-coins-col">
+            <Badge bg={step.coinsChange >= 0 ? 'success' : 'danger'} className="f1-coins-badge">
+              {step.coinsChange >= 0 ? '+' : ''}{step.coinsChange} coins
+            </Badge>
+            <div className="f1-step-total">Total: {step.total}</div>
+          </div>
+        </div>
       ))}
-    </ListGroup>
+    </div>
   )
 }
 

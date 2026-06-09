@@ -43,15 +43,15 @@ function App() {
   return (
     <UserContext.Provider value={user}>
       <Header doLogout={doLogout} />
-      <Container>
+      <Container fluid className="px-0">
         <Routes>
-            <Route path='/' element={user.id ? <GamePage /> : <PublicPage />}/>
-            <Route path='/play' element={user.id ? <PlayPage /> : <Navigate to='/' />} />
-            <Route path='/login' element={<LoginForm doLogin={doLogin} />} />
-            <Route path='/logout' element={<Logout doLogout={doLogout} />} />
-            <Route path='/game' element={user.id ? <GamePage /> : <Navigate to='/' />} />
-            <Route path='/ranking' element={user.id ? <RankingPage /> : <Navigate to='/' />} />
-            <Route path='*' element={<Navigate to='/' />} />
+          <Route path='/' element={user.id ? <GamePage /> : <PublicPage />}/>
+          <Route path='/play' element={user.id ? <PlayPage /> : <Navigate to='/' />} />
+          <Route path='/login' element={<LoginForm doLogin={doLogin} />} />
+          <Route path='/logout' element={<Logout doLogout={doLogout} />} />
+          <Route path='/game' element={user.id ? <GamePage /> : <Navigate to='/' />} />
+          <Route path='/ranking' element={user.id ? <RankingPage /> : <Navigate to='/' />} />
+          <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </Container>
       <Footer/>
