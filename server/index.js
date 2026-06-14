@@ -62,8 +62,8 @@ const buildLineMap = (stationsOfLines) => {
 
 const prepareNetwork = (stationsOfLines) => {
   const lineMap = buildLineMap(stationsOfLines);
-  const lineSets = new Map();
-  const stationLineCount = new Map();
+  const lineSets = new Map(); // for each segment, how many lines cross it {"4-12", {1, 2 ,3}}
+  const stationLineCount = new Map(); // for each station, the set of lines it is crossed by {3, {3, 4}}
 
   for (const [lineId, sorted] of lineMap) {
     for (let i = 0; i < sorted.length - 1; i++) {
@@ -107,25 +107,34 @@ const validateRoute = (segments, startId, endId, { lineSets, interchanges }) => 
 
   const route = [startId];
   const usedSegments = new Set();
+
+  // check if some segment have been selected more times (should not happen by default because are disactivated by the client)
   for (const seg of segments) {
     const segKey = pairKey(seg.from, seg.to);
-    if (usedSegments.has(segKey)) return false;   // segmento ripetuto
+    if (usedSegments.has(segKey)) return false;   // repeated segment
     usedSegments.add(segKey);
 
+    // check continuity of the route
     const last = route[route.length - 1];
     if (seg.from === last) route.push(seg.to);
     else if (seg.to === last) route.push(seg.from);
     else return false;
   }
+  // if the last element of the route is not equal to endId means that the route is broken, returns false
   if (route[route.length - 1] !== endId) return false;
 
+  // check of the first segment
   let activeLines = lineSets.get(pairKey(route[0], route[1]));
   if (!activeLines?.size) return false;
 
+  // check on intermediate nodes
   for (let i = 1; i < route.length - 1; i++) {
-    const nextLines = lineSets.get(pairKey(route[i], route[i + 1]));
+    const nextLines = lineSets.get(pairKey(route[i], route[i + 1])); // check the existence of the segment
     if (!nextLines?.size) return false;
     const shared = new Set([...activeLines].filter(l => nextLines.has(l)));
+    // case 1: continue on the same line
+    // case 2: if current station is an interchange (shared is empty) the change is allowed
+    // case 3: impossible route, return false
     activeLines = shared.size > 0 ? shared : interchanges.has(route[i]) ? nextLines : null;
     if (!activeLines) return false;
   }
@@ -209,7 +218,7 @@ app.post('/api/game', isLoggedIn, async (req, res) => {
     }
 
     if (validPairs.length === 0) return res.status(500).json({ error: 'No valid pairs found!' });
-    const pair = validPairs[Math.floor(Math.random() * validPairs.length)];
+    const pair = validPairs[Math.floor(Math.random() * validPairs.length)]; // random route to pass
     const gameId = await createGame(req.user.id, pair.start.id, pair.end.id);
     res.status(201).json({ gameId, startStation: pair.start, endStation: pair.end });
 

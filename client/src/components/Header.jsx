@@ -8,6 +8,7 @@ import { doLogout } from '../api/auth.js';
 function Header({ doLogout: handleLogout }) {
   const user = useContext(UserContext);
 
+  // managing of logout 
   const logout = async () => {
     await doLogout();
     handleLogout();
@@ -18,6 +19,7 @@ function Header({ doLogout: handleLogout }) {
       <Container fluid>
         <Navbar.Brand><Link to={user.id ? '/game' : '/'} className="text-white text-decoration-none">Last Race</Link></Navbar.Brand>        
         <Nav className="ms-auto">
+          {/* if the user is authenticated can access to the ranking and play a game, otherwise there is the login button */}
           {user.id ? (
             <>
               <Nav.Link as={Link} to='/play'>Home</Nav.Link>

@@ -15,7 +15,6 @@ function LoginForm(props) {
         setErrormsg('')
 
         try {
-            // validations ...
             const user = await doLogin(username, password)
             props.doLogin(user)
         } catch (ex) {
@@ -43,6 +42,7 @@ function LoginForm(props) {
                         <div className="d-grid">
                             <Button className="f1-btn" type="submit">Log in</Button>
                         </div>
+                        {/* if the authentication goes wrong, a message error is generated and shown */} 
                         {errormsg && <div className="text-danger mt-3 text-center">{errormsg}</div>}
                     </Form>
                 </div>

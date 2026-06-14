@@ -59,11 +59,13 @@ function AvailableSegments({ segments, usedKeys, addSegment }) {
   return (
     <div className="f1-segment-list">
       {segments.map((seg, i) => {
+        // if present in the set, isUsed = true and the use cannot select that segment again
         const isUsed = usedKeys.has(i)
         return (
           <div
             key={i}
             className={`f1-segment-item${isUsed ? ' f1-segment-used' : ''}`}
+            // if the user can select the segment, the segment is added to the list of used segments and isUsed is inverted
             onClick={() => !isUsed && addSegment(seg, i)}
           >
             <span className="f1-segment-dot"></span>
@@ -76,6 +78,7 @@ function AvailableSegments({ segments, usedKeys, addSegment }) {
   )
 }
 
+// route is the list of selected segments
 function ChosenRoute({ route }) {
   if (route.length === 0) {
     return <div className="f1-route-empty">No segments selected yet.</div>

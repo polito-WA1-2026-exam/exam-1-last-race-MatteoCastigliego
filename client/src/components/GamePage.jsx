@@ -20,13 +20,14 @@ function GamePage() {
   // a ref to the timer is needed to stop the timer when a route is submitted
   const timerRef = useRef(null)
 
-  //a ref to the route is needed for validate the route in case the timer ends
+  // a ref to the route is needed for validate the route in case the timer ends
   const routeRef = useRef([])
 
   const usedKeys = new Set(route.map(seg => seg.index))
 
   const bgStyle = { '--f1-grid': `url(${f1Grid})` }
 
+  // for a new game, new state need to be defined
   const startNewGame = async () => {
     const game = await createGame()
     const segmentList = await fetchSegments()
@@ -37,13 +38,15 @@ function GamePage() {
     setPhase('planning')
   }
 
+  // gives the full route to the server in case the timer expires
   useEffect(() => { routeRef.current = route }, [route])
 
+  // manages the phase planning
   useEffect(() => {
     if (phase !== 'planning') return
     timerRef.current = setInterval(() => {
       setTimeLeft(t => {
-        if (t <= 1) {
+        if (t <= 1) { // timer out, must reset the timer to 90 sec and pass to the next phase
           clearInterval(timerRef.current)
           handleExecute(routeRef.current)
           return 0
@@ -51,7 +54,7 @@ function GamePage() {
         return t - 1
       })
     }, 1000)
-    return () => clearInterval(timerRef.current)
+    return () => clearInterval(timerRef.current) // stops the timer if we pass to the next phase before the 90 sec
   }, [phase])
 
   const handleExecute = async (currentRoute) => {
@@ -60,10 +63,12 @@ function GamePage() {
     setPhase('result')
   }
 
+  // adds a new segment to the actual route (seg is an array)
   const addSegment = (seg, index) => {
     setRoute(prev => [...prev, { ...seg, index }])
   }
 
+  // remove the last segment inserted in case it is an error
   const removeLastSegment = () => {
     if (route.length === 0) return
     setRoute(prev => prev.slice(0, -1))
