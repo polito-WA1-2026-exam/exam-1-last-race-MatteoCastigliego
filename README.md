@@ -1,10 +1,7 @@
 # Exam #1: "LAST RACE"
----
 ## Student: s364209 CASTIGLIEGO MATTEO FRANCESCO 
----
 
 ## React Client Application Routes
----
 
 - Route `/`: homepage with game instructions if not authenticated plus login button. If authenticated you are linked to `/game`
 - Route `/play`: page shown when a game ends to allow the user to start a new one
@@ -14,7 +11,6 @@
 - Route `/ranking`: shows general ranking of authenticated users, login required
 
 ## API Server
----
 
 - POST `/api/sessions`
   - request body: `{ username, password }`
@@ -40,7 +36,6 @@
 
 
 ## Database Tables
----
 
 - Table `user` - contains registered users with their own hash password and salt for authentication (id, name, surname, username, password, salt)
 - Table `station` - contains the list of stations in the game (id, name)
@@ -50,7 +45,6 @@
 - Table `stations_of_a_line` - contains for each line the list of stations along that line with their relative position; elements are ordered by id_line and for each line the order depends by the position; useful to find connections (id_line, id_station, position)
 
 ## Main React Components
----
 - `PublicPage` (in `PublicPage.jsx`): homepage where are placed all game instructions for unauthenticated users and login button.
 - `GamePage` (in `GamePage.jsx`): general manager of the game where all phases are managed.
 - `SetupPhase` (in `SetupPhase.jsx`): page where is placed the entire map and the 'play' button.
@@ -59,7 +53,6 @@
 - `RankingPage` (in `RankingPage.jsx`): displays the general ranking of registered users with their name and best score.
 
 ## Screenshot
----
 
 ![Screenshot](./img/publicpage.png)
 ![Screenshot](./img/loginform.png)
@@ -70,7 +63,6 @@
 ![Screenshot](./img/playpage.png)
 
 ## Users Credentials
----
 
 - __matteocastigliego__, matteo (two games played)
 - __federicabelli__, federica (three games played)
@@ -79,6 +71,5 @@
 - __antoniaverdi__, antonia (no game played)
 
 ## Use of AI Tools
----
 I used Claude for CSS, style of pages, verify that all specifications were satisfied, implementation of Network Map and optimize some line of code for the validation of the route selected by the user.
 I used also ChatGPT for generation of images.
