@@ -59,7 +59,7 @@ function AvailableSegments({ segments, usedKeys, addSegment }) {
   return (
     <div className="f1-segment-list">
       {segments.map((seg, i) => {
-        // if present in the set, isUsed = true and the use cannot select that segment again
+        // if present in the set, isUsed = true and the user cannot select that segment again
         const isUsed = usedKeys.has(i)
         return (
           <div

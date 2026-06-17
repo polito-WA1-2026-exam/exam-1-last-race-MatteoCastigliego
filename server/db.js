@@ -134,8 +134,6 @@ db.serialize(() => {
   db.run(`INSERT OR IGNORE INTO user (name, surname, username, password, salt) VALUES ('Matteo', 'Castigliego', 'matteocastigliego', '77fc64e6842bec46879b1eaa96c7eb32', '92f1e4de3082ed0b741ac3f2aa53c2fa')`);
   db.run(`INSERT OR IGNORE INTO user (name, surname, username, password, salt) VALUES ('Giulia', 'Blu', 'giuliablu', 'bc94a674bde3c49255a690f7a9337598', 'd5db29be260f0c4fc88ba4cf4a5f28bf')`);
 
-  /* POPULATION DB: games */
-
 });
 
 export default db;

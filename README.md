@@ -9,7 +9,7 @@
 - Route `/`: homepage with game instructions if not authenticated plus login button. If authenticated you are linked to `/game`
 - Route `/play`: page shown when a game ends to allow the user to start a new one
 - Route `/login`: page that contains the login form, redirect to `/game` after authentication, otherwise to `/login`
-- Route `/logout`: logs out the current user redirectin him to `/`
+- Route `/logout`: logs out the current user redirecting him to `/`
 - Route `/game`: core page that contains all phases of the game, login required
 - Route `/ranking`: shows general ranking of authenticated users, login required
 
@@ -55,7 +55,7 @@
 - `GamePage` (in `GamePage.jsx`): general manager of the game where all phases are managed.
 - `SetupPhase` (in `SetupPhase.jsx`): page where is placed the entire map and the 'play' button.
 - `PlanningPhase` (in `PlanningPhase.jsx`): in this page there is the map with stations, list of available segments, list of segments selected by the user and the 'submit route' button.
-- `ResultPhase` (in `ResultPhase.jsx`): this page is shown when the timer ends or when a route is submitted and shows the result of the game, 0 if fail or all paths in case of success with relative events and coins gained or lost. There is a button to show the path step by step.
+- `ResultPhase` (in `ResultPhase.jsx`): this page is shown when the timer ends or when a route is submitted and shows the result of the game, 0 if fail or all paths in case of success with relative events and coins gained or lost. There is also a button to show the path step by step.
 - `RankingPage` (in `RankingPage.jsx`): displays the general ranking of registered users with their name and best score.
 
 ## Screenshot
@@ -80,5 +80,5 @@
 
 ## Use of AI Tools
 ---
-I used Claude for CSS, style of pages and optimize some line of code for the validation of the route selected by the user.
-I used also ChatGpt for generation of images.
+I used Claude for CSS, style of pages, verify that all specifications were satisfied, implementation of Network Map and optimize some line of code for the validation of the route selected by the user.
+I used also ChatGPT for generation of images.
