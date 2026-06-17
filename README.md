@@ -14,11 +14,11 @@
 
 - POST `/api/sessions`
   - request body: `{ username, password }`
-  - response body: `{ id, username, name }` or 401 error 
+  - response body: `{ id, username, name }` or 401 (unauthorized) error 
 - GET `/api/sessions/current`
-  - response body: `{ id, username, name }` if authenticated, 401 if not
+  - response body: `{ id, username, name }` if authenticated, 401 (unauthorized) if not
 - DELETE `/api/sessions/current`
-  - response: 200, logs out the current user
+  - response: 200 (general success), logs out the current user
 - GET `/api/segments`
   - login required
   - response body: array of `{ from, fromName, to, toName }`, represents pairs of ajacent stations along all lines

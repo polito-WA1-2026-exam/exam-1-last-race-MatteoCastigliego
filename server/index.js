@@ -62,8 +62,8 @@ const buildLineMap = (stationsOfLines) => {
 
 const prepareNetwork = (stationsOfLines) => {
   const lineMap = buildLineMap(stationsOfLines);
-  const lineSets = new Map(); // for each segment, how many lines cross it {"4-12", {1, 2 ,3}}
-  const stationLineCount = new Map(); // for each station, the set of lines it is crossed by {3, {3, 4}}
+  const lineSets = new Map(); // for each segment, the set of lines that cross it {"4-12", {1, 2 ,3}}
+  const stationLineCount = new Map(); // for each station, the number of lines it is crossed by {3, 2}
 
   for (const [lineId, sorted] of lineMap) {
     for (let i = 0; i < sorted.length - 1; i++) {
@@ -98,7 +98,7 @@ const buildGraph = (stationsOfLines) => {
       graph.get(b).add(a);
     }
   }
-  return graph;
+  return graph; // {station_id -> {adjacent_stations_ids}}
 };
 
 // Validates the route built by the user 
@@ -162,7 +162,7 @@ const bfs = (graph, startId) => {
 
 // POST /api/sessions — login
 app.post('/api/sessions', passport.authenticate('local'), (req, res) => {
-  return res.status(201).json(req.user);
+  return res.status(201).json(req.user); // session created
 });
 
 // GET /api/sessions/current — check session
@@ -171,7 +171,7 @@ app.get("/api/sessions/current", (req, res) => {
     res.json(req.user);
   }
   else
-    res.status(401).json({ error: "Not authenticated" });
+    res.status(401).json({ error: "Not authenticated" }); // not authorized
 });
 
 // DELETE /api/sessions/current — logout
@@ -187,7 +187,7 @@ app.get('/api/segments', isLoggedIn, async (req, res) => {
     const segments = await getSegments();
     res.json(segments);
   } catch {
-    res.status(500).json({ error: 'Error while finding segments' });
+    res.status(500).json({ error: 'Error while finding segments' }); // general server error
   }
 });
 
@@ -220,7 +220,7 @@ app.post('/api/game', isLoggedIn, async (req, res) => {
     if (validPairs.length === 0) return res.status(500).json({ error: 'No valid pairs found!' });
     const pair = validPairs[Math.floor(Math.random() * validPairs.length)]; // random route to pass
     const gameId = await createGame(req.user.id, pair.start.id, pair.end.id);
-    res.status(201).json({ gameId, startStation: pair.start, endStation: pair.end });
+    res.status(201).json({ gameId, startStation: pair.start, endStation: pair.end }); // game created
 
   } catch {
     res.status(500).json({ error: 'Error while creating new game!' });

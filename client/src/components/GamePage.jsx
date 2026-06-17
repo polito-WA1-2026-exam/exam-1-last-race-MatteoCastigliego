@@ -44,7 +44,7 @@ function GamePage() {
   // manages the phase planning
   useEffect(() => {
     if (phase !== 'planning') return
-    timerRef.current = setInterval(() => {
+    timerRef.current = setInterval(() => { 
       setTimeLeft(t => {
         if (t <= 1) { // timer out, must reset the timer to 90 sec and pass to the next phase
           clearInterval(timerRef.current)
