@@ -23,7 +23,7 @@ function GamePage() {
   // a ref to the route is needed for validate the route in case the timer ends
   const routeRef = useRef([])
 
-  const usedKeys = new Set(route.map(seg => seg.index))
+  const usedKeys = new Set(route.map(seg => seg.index)) // structure derived from the state 'route'
 
   const bgStyle = { '--f1-grid': `url(${f1Grid})` }
 
