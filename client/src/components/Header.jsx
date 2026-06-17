@@ -17,15 +17,15 @@ function Header({ doLogout: handleLogout }) {
   return (
     <Navbar bg='dark' variant='dark'>
       <Container fluid>
-        <Navbar.Brand><Link to={user.id ? '/game' : '/'} className="text-white text-decoration-none">Last Race</Link></Navbar.Brand>        
+        <Navbar.Brand><Link to={user.id ? '/game' : '/'} className="text-white text-decoration-none">🏎️ Last Race</Link></Navbar.Brand>
         <Nav className="ms-auto">
           {/* if the user is authenticated can access to the ranking and play a game, otherwise there is the login button */}
           {user.id ? (
             <>
               <Nav.Link as={Link} to='/play'>Home</Nav.Link>
               <Nav.Link as={Link} to='/ranking'>Ranking</Nav.Link>
-              <UserInfo name = {user.name} />
-              <LogoutButton logout = {logout}/>
+              <UserInfo name={user.name} />
+              <LogoutButton logout={logout} />
             </>
           ) : (
             <LoginButton />
@@ -36,16 +36,16 @@ function Header({ doLogout: handleLogout }) {
   );
 }
 
-function LoginButton(){
+function LoginButton() {
   const navigate = useNavigate();
   return <Button variant='outline-light' onClick={() => navigate('/login')}>Login</Button>
 }
 
-function LogoutButton(prop){
+function LogoutButton(prop) {
   return <Button variant='outline-light' onClick={prop.logout}>Logout</Button>
 }
 
-function UserInfo(props){
+function UserInfo(props) {
   return <Nav.Item className="d-flex align-items-center text-white me-3">Welcome back, {props.name}</Nav.Item>
 }
 
